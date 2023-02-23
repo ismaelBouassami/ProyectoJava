@@ -1,17 +1,18 @@
 package com.proyecto.main;
 
-import com.proyecto.edu.MostrarNombre;
-import com.proyecto.joseluis.MostraNom;
+import com.proyecto.joseluis.MostrarNombreJoselu;
+import com.proyecto.edu.MostrarNombreEdu;
+
 
 public class Main {
 
 	public static void main(String[] args) {
 		
 		// Joselu
-		MostraNom nom1 = new MostraNom();
-		nom1.mostrar();
+		MostrarNombreJoselu alumno1 = new MostrarNombreJoselu();
+		System.out.println(alumno1.toString());
 		// Edu
-		MostrarNombre alumno2 = new MostrarNombre();
+		MostrarNombreEdu alumno2 = new MostrarNombreEdu();
 		System.out.println(alumno2.toString());
 	}
 

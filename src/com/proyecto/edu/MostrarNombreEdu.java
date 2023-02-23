@@ -1,6 +1,6 @@
 package com.proyecto.edu;
 
-public class MostrarNombre {
+public class MostrarNombreEdu {
 	private String nombre = "Edu";
 
 	@Override
