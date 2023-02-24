@@ -5,7 +5,6 @@ public class MostrarNombreEdu {
 
 	@Override
 	public String toString() {	
-		System.out.println("Edu la mama");
 		return "Nom: " + this.nombre;
 	}
 	
