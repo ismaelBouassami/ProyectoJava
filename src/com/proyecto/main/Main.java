@@ -12,7 +12,6 @@ public class Main {
 		// Joselu
 		MostrarNombreJoselu alumno1 = new MostrarNombreJoselu();
 		System.out.println(alumno1.toString());
-		System.out.println("prueba nueva en rama");
 		// Edu
 		MostrarNombreEdu alumno2 = new MostrarNombreEdu();
 		System.out.println(alumno2.toString());
