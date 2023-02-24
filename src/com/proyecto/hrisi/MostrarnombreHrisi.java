@@ -1,11 +1,16 @@
 package com.proyecto.hrisi;
 
 public class MostrarnombreHrisi {
+	
+	private String nombre1 = "Hrisi";
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-
+	@Override
+	public String toString() {
+		return "Nom: " + this.nombre1;
 	}
+	
+	
+	
+
 
 }
