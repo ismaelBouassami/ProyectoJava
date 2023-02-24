@@ -1,6 +1,7 @@
 package com.proyecto.main;
 
 import com.proyecto.joseluis.MostrarNombreJoselu;
+import com.proyecto.Ismael.MostrarNombreIsma;
 import com.proyecto.edu.MostrarNombreEdu;
 
 
@@ -14,6 +15,9 @@ public class Main {
 		// Edu
 		MostrarNombreEdu alumno2 = new MostrarNombreEdu();
 		System.out.println(alumno2.toString());
+		
+		MostrarNombreIsma alumno3 = new MostrarNombreIsma();
+		System.out.println(alumno3.toString());
 	}
 
 }
