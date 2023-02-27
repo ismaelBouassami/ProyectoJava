@@ -37,16 +37,7 @@ public class Main {
 		System.out.println("Eeedu");
 		System.out.println("Edu");
 
-		System.out.println("Hola pepeeeelu");
-		System.out.println("AAAAAAAAAAAAA");
-		System.out.println("eeee");
-		System.out.println("Papi isma es fisimo");
-
-		for (int i = 0; i < args.length; i++) {
-			System.out.println("AAAAAAAAAAAAAAAaa");
-		}
-
-		System.out.println("Ja o que");
+		
 		
 	}
 
