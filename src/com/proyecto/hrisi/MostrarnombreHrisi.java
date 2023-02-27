@@ -1,6 +1,6 @@
 package com.proyecto.hrisi;
 
-public class MostrarnombreHrisi {
+public class MostrarNombreHrisi {
 	
 	private String nombre1 = "Hrisi";
 
@@ -8,9 +8,4 @@ public class MostrarnombreHrisi {
 	public String toString() {
 		return "Nom: " + this.nombre1;
 	}
-	
-	
-	
-
-
 }
