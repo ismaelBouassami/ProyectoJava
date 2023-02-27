@@ -26,8 +26,6 @@ public class Main {
 		// Javier
 		MostrarNombreJavier alumno5 = new MostrarNombreJavier();
 		System.out.println(alumno5.toString());
-
 		
 	}
-
 }
