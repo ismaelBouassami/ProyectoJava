@@ -18,6 +18,12 @@ public class Main {
 		
 		MostrarNombreIsma alumno3 = new MostrarNombreIsma();
 		System.out.println(alumno3.toString());
+		
+		// Proban una coseta mes
+		System.out.println("Edu");
+		System.out.println("Edu");
+		System.out.println("Edu");
+		System.out.println("Edu");
 	}
 
 }
