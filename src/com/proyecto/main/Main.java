@@ -3,7 +3,7 @@ package com.proyecto.main;
 import com.proyecto.joseluis.MostrarNombreJoselu;
 import com.proyecto.Ismael.MostrarNombreIsma;
 import com.proyecto.edu.MostrarNombreEdu;
-import com.proyecto.hrisi.MostrarNombreHrisi;
+import com.proyecto.hrisi.MostrarnombreHrisi;
 import com.proyecto.javier.MostrarNombreJavier;
 
 
@@ -21,7 +21,7 @@ public class Main {
 		MostrarNombreIsma alumno3 = new MostrarNombreIsma();
 		System.out.println(alumno3.toString());
 		// Hrisi
-		MostrarNombreHrisi alumno4 = new MostrarNombreHrisi();
+		MostrarnombreHrisi alumno4 = new MostrarnombreHrisi();
 		System.out.println(alumno4.toString());
 		// Javier
 		MostrarNombreJavier alumno5 = new MostrarNombreJavier();
