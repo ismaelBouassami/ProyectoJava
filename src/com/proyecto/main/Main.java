@@ -42,6 +42,11 @@ public class Main {
 		System.out.println("eeee");
 		System.out.println("Papi isma es fisimo");
 
+		for (int i = 0; i < args.length; i++) {
+			System.out.println("AAAAAAAAAAAAAAAaa");
+		}
+
+		
 	}
 
 }
