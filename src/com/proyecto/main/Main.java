@@ -28,7 +28,7 @@ public class Main {
 		System.out.println("Edu");
 		System.out.println("Edu");
 		
-		System.out.println("AAAAAAAAAAA");
+		System.out.println("AAAAAAAAAAAAAAA");
 
 		System.out.println("Edu");
 		System.out.println("Edu");
@@ -42,6 +42,11 @@ public class Main {
 		System.out.println("eeee");
 		System.out.println("Papi isma es fisimo");
 
+		for (int i = 0; i < args.length; i++) {
+			System.out.println("AAAAAAAAAAAAAAAaa");
+		}
+
+		
 	}
 
 }
