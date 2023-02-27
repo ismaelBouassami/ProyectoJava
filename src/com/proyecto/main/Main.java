@@ -28,7 +28,7 @@ public class Main {
 		System.out.println("Edu");
 		System.out.println("Edu");
 		
-		System.out.println("AAAAAAAAAAA");
+		System.out.println("AAAAAAAAAAAAAAA");
 
 	}
 
