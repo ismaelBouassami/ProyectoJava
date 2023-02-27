@@ -1,31 +1,28 @@
 package com.proyecto.main;
 
-import com.proyecto.joseluis.MostrarNombreJoselu;
-import com.proyecto.Ismael.MostrarNombreIsma;
-import com.proyecto.edu.MostrarNombreEdu;
-import com.proyecto.hrisi.MostrarnombreHrisi;
-import com.proyecto.javier.MostrarNombreJavier;
-
+import com.proyecto.utils.ControlErrores;
 
 public class Main {
 
 	public static void main(String[] args) {
-		
-		// Joselu
-		MostrarNombreJoselu alumno1 = new MostrarNombreJoselu();
-		System.out.println(alumno1.toString());
-		// Edu
-		MostrarNombreEdu alumno2 = new MostrarNombreEdu();
-		System.out.println(alumno2.toString());
-		// Ismael
-		MostrarNombreIsma alumno3 = new MostrarNombreIsma();
-		System.out.println(alumno3.toString());
-		// Hrisi
-		MostrarnombreHrisi alumno4 = new MostrarnombreHrisi();
-		System.out.println(alumno4.toString());
-		// Javier
-		MostrarNombreJavier alumno5 = new MostrarNombreJavier();
-		System.out.println(alumno5.toString());
-		
+
+		// MENU PRINCIPAL //
+		System.out.println(
+				"¿Que desea hacer? -> Para registrar un usuario pulse 1 | Para loguear un usuario pulse 2 | Pulse -1 para salir.");
+		int n = ControlErrores.validarInt();
+
+		switch (n) {
+		case 1:
+			///// AQUI IRA LA FUNCION DE registrarUser() ///////////
+			System.out.println("Registro");
+			break;
+		case 2:
+			///// AQUI IRA LA FUNCION DE loginUser() ///////////
+			System.out.println("Login");
+			break;
+		default:
+			System.out.println("Salir"); // PARA SALIR INTRODUCIR -1
+		}
+
 	}
 }
