@@ -18,6 +18,7 @@ public class Main {
 		
 		MostrarNombreIsma alumno3 = new MostrarNombreIsma();
 		System.out.println(alumno3.toString());
+		System.out.println("Soy isma");
 	}
 
 }
