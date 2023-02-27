@@ -27,7 +27,19 @@ public class Main {
 		System.out.println("Edu");
 		System.out.println("Edu");
 		System.out.println("Edu");
-		System.out.println("Papi isma es guaìsimo");
+		
+
+		System.out.println("Edu");
+		System.out.println("Edu");
+		System.out.println("Edu");
+
+		System.out.println("Eeedu");
+		System.out.println("Edu");
+
+		System.out.println("Hola pepeeeelu");
+		System.out.println("AAAAAAAAAAAAA");
+		System.out.println("eeee");
+		System.out.println("Papi isma es fisimo");
 
 	}
 
