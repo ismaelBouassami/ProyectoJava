@@ -1,11 +1,11 @@
 package com.proyecto.javier;
 
 public class MostrarNombreJavier {
-		private String nombre = "Javi";
+	
+	private String nombre = "Javi";
 
-		@Override
-		public String toString() {	
-			return "Nom: " + this.nombre;
-		}
-
+	@Override
+	public String toString() {
+		return "Nom: " + this.nombre;
+	}
 }

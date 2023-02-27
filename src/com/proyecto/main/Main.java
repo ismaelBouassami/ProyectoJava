@@ -3,6 +3,8 @@ package com.proyecto.main;
 import com.proyecto.joseluis.MostrarNombreJoselu;
 import com.proyecto.Ismael.MostrarNombreIsma;
 import com.proyecto.edu.MostrarNombreEdu;
+import com.proyecto.hrisi.MostrarNombreHrisi;
+import com.proyecto.javier.MostrarNombreJavier;
 
 
 public class Main {
@@ -15,36 +17,15 @@ public class Main {
 		// Edu
 		MostrarNombreEdu alumno2 = new MostrarNombreEdu();
 		System.out.println(alumno2.toString());
-		
+		// Ismael
 		MostrarNombreIsma alumno3 = new MostrarNombreIsma();
 		System.out.println(alumno3.toString());
-
-		System.out.println("Soy isma");
-
-		
-		// Proban una coseta mes
-		System.out.println("Edu");
-		System.out.println("Edu");
-		System.out.println("Edu");
-		System.out.println("Edu");
-		
-		System.out.println("AAAAAAAAAAAAAAA");
-
-		System.out.println("Edu");
-		System.out.println("Edu");
-		System.out.println("Edu");
-
-		System.out.println("Eeedu");
-		System.out.println("Edu");
-
-		System.out.println("Hola pepeeeelu");
-		System.out.println("AAAAAAAAAAAAA");
-		System.out.println("eeee");
-		System.out.println("Papi isma es fisimo");
-
-		for (int i = 0; i < args.length; i++) {
-			System.out.println("AAAAAAAAAAAAAAAaa");
-		}
+		// Hrisi
+		MostrarNombreHrisi alumno4 = new MostrarNombreHrisi();
+		System.out.println(alumno4.toString());
+		// Javier
+		MostrarNombreJavier alumno5 = new MostrarNombreJavier();
+		System.out.println(alumno5.toString());
 
 		
 	}
