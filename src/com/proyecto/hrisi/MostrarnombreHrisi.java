@@ -1,6 +1,6 @@
 package com.proyecto.hrisi;
 
-public class MostrarNombreHrisi {
+public class MostrarnombreHrisi {
 	
 	private String nombre1 = "Hrisi";
 
