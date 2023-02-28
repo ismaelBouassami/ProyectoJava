@@ -1,6 +1,8 @@
 package com.proyecto.utils;
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ControlErrores {
 
@@ -31,6 +33,25 @@ public class ControlErrores {
 	// VALIDAR UN FLOAT //
 
 	// VALIDAR UN STRING //
+	public static String validarString() {
+		Scanner entrada = new Scanner(System.in);
+		String cadena = "";
+		boolean verdad = false;
+
+		do {
+			cadena = entrada.nextLine().trim().replace("\t", " ").replace(" ", "");
+
+			if (cadena.equals("")) {
+				System.out.println("Error: El campo no puede estar vacio.");
+			} else if (cadena.length() > 20) {
+				System.out.println("Error: El dato introducido no puede tener mas de 20 caracteres.");
+			} else {
+				verdad = true;
+			}
+		} while (!verdad);
+
+		return cadena;
+	}
 
 	// VALIDAR PASSWORD //
 	public static String pedirContraseña() {
@@ -60,6 +81,29 @@ public class ControlErrores {
 
 		return password;
 	}
+	// VALIDAR UN CORREO ELECTRONICO
+	public static String validarEmail() {
+		Scanner entrada = new Scanner(System.in);
+		String email="";
+		boolean correcto=false;
+		do {
+			
+			email = entrada.nextLine();			
+			if (!Pattern.compile("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$").matcher(email).find()) {
+				System.out.println("Email no valido vuelve a introducirlo");
+
+				
+			}else {
+				correcto=true;
+			}
+			
+		} while (!correcto);
+		
+		
+		return email;
+		
+	}
+	
 
 	// VALIDAR UN FILE //
 

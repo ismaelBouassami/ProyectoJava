@@ -9,7 +9,7 @@ public class User {
 	protected String contraseña;
 	protected String poblacion;
 	protected String rol;
-	protected Date fechaNacimiento;
+	protected String fechaNacimiento;
 
 	public String getNombre() {
 		return nombre;
@@ -59,16 +59,16 @@ public class User {
 		this.rol = rol;
 	}
 
-	public Date getFechaNacimiento() {
+	public String getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 
-	public void setFechaNacimiento(Date fechaNacimiento) {
+	public void setFechaNacimiento(String fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
 	public User(String nombre, String apellidos, String email, String contraseña, String poblacion, String rol,
-			Date fechaNacimiento) {
+			Date fechaNacimiento2) {
 		super();
 		this.nombre = nombre;
 		this.apellidos = apellidos;
@@ -76,7 +76,7 @@ public class User {
 		this.contraseña = contraseña;
 		this.poblacion = poblacion;
 		this.rol = rol;
-		this.fechaNacimiento = fechaNacimiento;
+		this.fechaNacimiento = fechaNacimiento2;
 	}
 
 	public void crearLista() {
