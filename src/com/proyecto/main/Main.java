@@ -1,6 +1,7 @@
 package com.proyecto.main;
 
 import com.proyecto.utils.ControlErrores;
+import com.proyecto.utils.Funciones;
 
 public class Main {
 
@@ -15,6 +16,9 @@ public class Main {
 		case 1:
 			///// AQUI IRA LA FUNCION DE registrarUser() ///////////
 			System.out.println("Registro");
+			System.out.println("Para hacer posible el registro de usuario deberas de proporcionarnos ciertos datos");
+			
+			Funciones.registrarUsuario();
 			break;
 		case 2:
 			///// AQUI IRA LA FUNCION DE loginUser() ///////////
