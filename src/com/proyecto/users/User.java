@@ -68,7 +68,7 @@ public class User {
 	}
 
 	public User(String nombre, String apellidos, String email, String contraseña, String poblacion, String rol,
-			Date fechaNacimiento2) {
+			String fechaNacimiento2) {
 		super();
 		this.nombre = nombre;
 		this.apellidos = apellidos;
