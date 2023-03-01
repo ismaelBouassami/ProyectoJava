@@ -11,7 +11,7 @@ public class Funciones {
 	// REGISTRO USUARIO //
 	public static void registrarUsuario() {
 		int conId=1;
-		System.out.println("Introduce tu nombre de usuario");
+		System.out.println("Introduce tu nombre de usuario: ");
 		String usuario = ControlErrores.validarString();
 
 		System.out.println("Introduce los apellidos");
@@ -38,7 +38,13 @@ public class Funciones {
 	}
 
 	// LOGIN USUARIO //
-
+	public static void loginUsu() {
+		System.out.println("Introduce tu nombre de usuario: ");
+		String usuario = ControlErrores.validarString();
+		
+		System.out.println("Introduce la contraseña: ");
+		
+	}
 	// ELIMINAR USUARIO //
 
 	// ETC ETC //

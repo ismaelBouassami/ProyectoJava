@@ -107,5 +107,6 @@ public class ControlErrores {
 
 	// VALIDAR UN FILE //
 
-	// ETC ETC //
+	// VALIDAR UN USUARI //
+	
 }
