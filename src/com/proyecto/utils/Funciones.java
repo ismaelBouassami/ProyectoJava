@@ -32,9 +32,9 @@ public class Funciones {
 		//registro finish
 		System.out.println("Registro completado");
 		
-		Cliente N1= new Cliente(usuario, apellidos, email, contraseña, poblacion, "ROL_USUARIO",fecha, conId);
-		conId++;
-		System.out.println(N1.toString());
+//		Cliente N1= new Cliente(usuario, apellidos, contraseña, email , poblacion, "ROL_USUARIO",fecha, conId);
+//		conId++;
+//		System.out.println(N1.toString());
 	}
 
 	// LOGIN USUARIO //
