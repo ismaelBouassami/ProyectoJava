@@ -1,0 +1,4 @@
+ID | Nombre           | Apellidos        | Email                        | Contraseña       | Población   | Rol        | Fecha        
+---+------------------+------------------+------------------------------+------------------+-------------+------------+--------------
+2  |joselu02          |juanesteve        |juanestevej@gmail.com         |canals            |canals       |ROL_USUARI  |30-04-2002    
+2  |adeia             |torregrosa        |adriatorre@hotmail.com        |canals            |canals       |ROL_USUARI  |34343         

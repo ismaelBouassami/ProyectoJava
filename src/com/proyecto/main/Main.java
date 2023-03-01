@@ -9,7 +9,7 @@ public class Main {
 
 		// MENU PRINCIPAL //
 		System.out.println(
-				"¿Que desea hacer? -> Para registrar un usuario pulse 1 | Para loguear un usuario pulse 2 | Pulse -1 para salir.");
+				"¿Que desea hacer? \n-> Para registrar un usuario pulse 1 \n-> Para loguear un usuario pulse 2 \n-> Pulse -1 para salir.");
 		int n = ControlErrores.validarInt();
 
 		switch (n) {
