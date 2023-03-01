@@ -1,51 +1,52 @@
 package com.proyecto.users;
 
-import java.util.Date;
+import java.util.List;
+
+import com.proyecto.clases.Actor;
+import com.proyecto.clases.Director;
+import com.proyecto.clases.Pelicula;
 
 public class Cliente extends User {
-	private int id=0;
 
-	
-	
-	
-	
-	
-	
-	//pendiente de arreglar id
+	/// UN CLIENTE TENDRA LISTAS DE ACTORES, DIRECTORES Y PELICULAS
+	private List<Actor> actores;
+	private List<Director> directores;
+	private List<Pelicula> peliculas;
 
-	public Cliente(String nombre, String apellidos, String email, String contraseña, String poblacion, String rol,
-			String fechaNacimiento,int id) {
-		super(nombre, apellidos, email, contraseña, poblacion, rol, fechaNacimiento);
-		
-		
-		this.id = id;
-		
-	}
-	
-
-	public void crearLista() {
-
+	/// CONSTRUCTOR
+	public Cliente(String nombre, String apellidos, String contrasenia, String email, String poblacion,
+			String rol, String fechaNacimiento, List<Actor> actores, List<Director> directores,
+			List<Pelicula> peliculas) {
+		super(nombre, apellidos, contrasenia, email, poblacion, rol, fechaNacimiento);
+		this.actores = actores;
+		this.directores = directores;
+		this.peliculas = peliculas;
 	}
 
-	public void consultarLista() {
-
+	/// GETTERS Y SETTERS
+	public List<Actor> getActores() {
+		return actores;
 	}
 
-	public void modificarLista() {
-
+	public void setActores(List<Actor> actores) {
+		this.actores = actores;
 	}
 
-	public void eliminarLista() {
-
+	public List<Director> getDirectores() {
+		return directores;
 	}
 
-
-	@Override
-	public String toString() {
-		return "Cliente [id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", email=" + email
-				+ ", contraseña=" + contraseña + ", poblacion=" + poblacion + ", rol=" + rol + ", fechaNacimiento="
-				+ fechaNacimiento + "]";
+	public void setDirectores(List<Director> directores) {
+		this.directores = directores;
 	}
-	
-	
+
+	public List<Pelicula> getPeliculas() {
+		return peliculas;
+	}
+
+	public void setPeliculas(List<Pelicula> peliculas) {
+		this.peliculas = peliculas;
+	}
+
+	/// A UN NOSE SI NECESITAREMOS EL TOSTRING() EN ESTA CLASE
 }
