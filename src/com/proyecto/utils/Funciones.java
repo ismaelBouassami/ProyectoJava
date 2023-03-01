@@ -54,7 +54,7 @@ public class Funciones {
 	public static void guardarUsuario(int conID, String nombre, String apellidos, String email, String contraseña,
 			String poblacion, String rol, String fecha) {
 		try {
-			File file = new File("src/com/proyecto/utils/usersGuardados.txt");
+			File file = new File("ProyectoJava/src/com/proyecto/utils/usersGuardados.txt");
 			PrintWriter escriureUser = new PrintWriter(new FileWriter(file, true));
 
 			// Escribir los datos del usuario en un formato fijo
