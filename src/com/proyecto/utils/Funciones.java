@@ -60,7 +60,7 @@ public class Funciones {
 			String datos = String.format("%-3d|%-18s|%-18s|%-30s|%-18s|%-13s|%-12s|%-14s", conID, nombre, apellidos,
 					email, contraseña, poblacion, rol, fecha);
 
-			// Comprobar si el archivo está vacío para escribir el encabezado
+			// Comprobar  si el archivo está vacío para escribir el encabezado
 			if (file.length() == 0) {
 				escriureUser.println(
 						"ID | Nombre           | Apellidos        | Email                        | Contraseña       | Población   | Rol        | Fecha        ");
