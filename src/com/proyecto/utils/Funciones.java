@@ -42,11 +42,12 @@ public class Funciones {
 		// Array List (Actor, Director, Peliculas) como null, para guardar solo la
 		// información de los usuarios
 		Cliente N1 = new Cliente(usuario, apellidos, contraseña, email, poblacion, rol, fecha, null, null, null);
-		conId++;
+		
 		System.out.println(N1.toString());
 
 		// Pasamos los parametros del objeto a la funcíon guardar usuarios
 		guardarUsuario(conId, usuario, apellidos, email, contraseña, poblacion, rol, fecha);
+		conId++;
 	}
 
 	// GUARDAR USUARIOS EN FICHERO TXT
