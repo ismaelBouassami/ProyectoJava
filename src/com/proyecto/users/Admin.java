@@ -13,13 +13,14 @@ public class Admin extends User {
 	private List<Pelicula> peliculas;
 
 	/// CONSTRUCTOR ///
-	public Admin(String nombre, String apellidos, String contrasenia, String email, String poblacion, String rol,
+	public Admin(int id,String nombre, String apellidos, String contrasenia, String email, String poblacion, String rol,
 			String fechaNacimiento, List<Actor> actores, List<Director> directores, List<Pelicula> peliculas) {
-		super(nombre, apellidos, contrasenia, email, poblacion, rol, fechaNacimiento);
+		super(id,nombre, apellidos, contrasenia, email, poblacion, rol, fechaNacimiento);
 		this.actores = actores;
 		this.directores = directores;
 		this.peliculas = peliculas;
 	}
+	
 
 	/// GETTERS Y SETTERS
 	public List<Actor> getActores() {

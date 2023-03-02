@@ -14,10 +14,10 @@ public class Cliente extends User {
 	private List<Pelicula> peliculas;
 
 	/// CONSTRUCTOR
-	public Cliente(String nombre, String apellidos, String contrasenia, String email, String poblacion,
+	public Cliente(int id,String nombre, String apellidos, String contrasenia, String email, String poblacion,
 			String rol, String fechaNacimiento, List<Actor> actores, List<Director> directores,
 			List<Pelicula> peliculas) {
-		super(nombre, apellidos, contrasenia, email, poblacion, rol, fechaNacimiento);
+		super(id,nombre, apellidos, contrasenia, email, poblacion, rol, fechaNacimiento);
 		this.actores = actores;
 		this.directores = directores;
 		this.peliculas = peliculas;
@@ -47,6 +47,7 @@ public class Cliente extends User {
 	public void setPeliculas(List<Pelicula> peliculas) {
 		this.peliculas = peliculas;
 	}
+	
 
 	/// A UN NOSE SI NECESITAREMOS EL TOSTRING() EN ESTA CLASE
 }

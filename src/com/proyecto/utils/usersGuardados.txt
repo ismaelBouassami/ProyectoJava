@@ -1,6 +1,4 @@
 ID | Nombre           | Apellidos        | Email                        | Contraseña       | Población   | Rol        | Fecha        
 ---+------------------+------------------+------------------------------+------------------+-------------+------------+--------------
-1  |joselu02          |juanesteve        |juanestevej@gmail.com         |canals            |canals       |ROL_USUARI  |30-04-2002    
-2  |adeia             |torregrosa        |adriatorre@hotmail.com        |canals            |canals       |ROL_USUARI  |34343         
-1  |isma              |bouassami         |ismael@gmial.com              |ismael            |ismae        |ROL_USUARI  |222221277     
-1  |Edu               |Valls             |edu@gmail.com                 |12345             |Agullent     |ROL_USUARI  |hola          
+001|joselu            |juan              |jose@jose.com                 |canals            |canals       |ROL_USUARI  |30-04-2002    
+002|juan              |jose              |juan@juan.com                 |xativa            |canals       |ROL_USUARI  |3033030       

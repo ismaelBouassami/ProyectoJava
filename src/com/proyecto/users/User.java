@@ -6,7 +6,7 @@ import com.proyecto.clases.Pelicula;
 public class User {
 
 	// ATRIBUTOS //
-	protected static int countId = 0;
+//	protected static int countId = 0;
 	protected int id;
 	protected String nombre;
 	protected String apellidos;
@@ -17,12 +17,18 @@ public class User {
 	protected String fechaNacimiento;
 
 	/// CONTRUCTOR ///
-	public User(String nombre, String apellidos, String contrasenia, String email, String poblacion, String rol,
+	public User(int id, String nombre, String apellidos, String contrasenia, String email, String poblacion, String rol,
 			String fechaNacimiento) {
 
 		super();
-		countId++; // CONTADOR DEL ID PARA QUE SE AUTOINCREMENTE
-		this.id = countId;
+		// Cada vez que el programa es cerrado pierde el contador countId
+		// por lo tanto agregamos el parametro this.id=id, para pasarle la variable ID
+		// almacenada en un archivo de texto al constructor de la clase "User" desde el
+		// constructor de la clase "Cliente" :)
+//		countId++; // CONTADOR DEL ID PARA QUE SE AUTOINCREMENTE
+//		this.id = countId;
+
+		this.id = id;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.contrasenia = contrasenia;

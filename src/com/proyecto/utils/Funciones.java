@@ -1,7 +1,6 @@
 package com.proyecto.utils;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,10 +12,10 @@ public class Funciones {
 	static Scanner leer = new Scanner(System.in);
 
 	// Fuera del metodo para no reinicializar
-	public static  int conId = 1;
+	public static int conId = 1;
+	public static int finalId = 1;
 
-	
-	
+
 	// REGISTRO USUARIO //
 	public static void registrarUsuario() {
 		System.out.println("Introduce tu nombre de usuario:");
@@ -43,90 +42,86 @@ public class Funciones {
 		// registro finish
 		System.out.println("Registro completado");
 
-		// Array List (Actor, Director, Peliculas) como null, para guardar solo la
-		// información de los usuarios
-		Cliente N1 = new Cliente(usuario, apellidos, contraseña, email, poblacion, rol, fecha, null, null, null);
-		
-		
-		
+		// Con este metodo podremos ver cual fue el ultimo id utilizado, ahora
+		// simplemente debemos aumentar 1 en el id para el siguiente use
 		try {
-			  int numeroId=0;
-			 numeroId=
-			ultimoNumero("src/com/proyecto/utils/idUser.txt");
-			//Con este metodo podremos ver cual fue el ultimo id utilizado, ahora simplemente debemos aumentar 1 en el id para el siguiente use
-			conId=numeroId+1;
+			int numeroId = 0;
+			numeroId = ultimoNumero("src/com/proyecto/utils/idUser.txt");
+
+			conId = numeroId + 1;
+			finalId= conId;
 			retornarId(conId, "src/com/proyecto/utils/idUser.txt");
 		} catch (Exception e) {
 			System.out.println("No se ha podido crear tu id");
 		}
-		System.out.println(N1.toString());
-		// Pasamos los parametros del objeto a la funcíon guardar usuarios
-		guardarUsuario(conId, usuario, apellidos, email, contraseña, poblacion, rol, fecha);
 		
+		// Array List (Actor, Director, Peliculas) como null, para guardar solo la
+		// información de los usuarios
+		Cliente N1 = new Cliente(finalId, usuario, apellidos, contraseña, email, poblacion, rol, fecha, null, null, null);
+		System.out.println("\n"+N1.toString());
+
+		// Pasamos los parametros del objeto a la funcíon guardar usuarios
+		guardarUsuario(finalId, usuario, apellidos, email, contraseña, poblacion, rol, fecha);
+
 	}
-	//Crear archivo id
+
+	// Crear archivo id
 	public static void retornarId(int numero, String rutaArchivo) throws IOException {
-        // Crear un objeto File para el archivo en la ruta especificada
-        File archivo = new File(rutaArchivo);
-        // Crear un objeto Scanner para leer el archivo
-        Scanner scanner = new Scanner(archivo);
+		// Crear un objeto File para el archivo en la ruta especificada
+		File archivo = new File(rutaArchivo);
+		// Crear un objeto Scanner para leer el archivo
+		Scanner scanner = new Scanner(archivo);
 
+		boolean estaVacio = !scanner.hasNext();
 
-        boolean estaVacio = !scanner.hasNext();
+		// Verificar si el número ya existe en el archivo
+		boolean existeNumero = false;
+		while (scanner.hasNextInt()) {
+			int num = scanner.nextInt();
+			if (num == numero) {
+				existeNumero = true;
+				break;
+			}
+		}
 
-        // Verificar si el número ya existe en el archivo
-        boolean existeNumero = false;
-        while (scanner.hasNextInt()) {
-            int num = scanner.nextInt();
-            if (num == numero) {
-                existeNumero = true;
-                break;
-            }
-        }
+		// Si el número no existe en el archivo, agregarlo al final
+		if (!existeNumero) {
+			// Crear un objeto FileWriter con la opción de agregar al final del archivo
+			FileWriter writer = new FileWriter(archivo, !estaVacio);
 
-        // Si el número no existe en el archivo, agregarlo al final
-        if (!existeNumero) {
-            // Crear un objeto FileWriter con la opción de agregar al final del archivo
-            FileWriter writer = new FileWriter(archivo,!estaVacio);
-            
-            writer.write(" "+numero + " ");
-         
-            writer.close();
-        }
+			writer.write(" " + numero + " ");
+			writer.close();
+		}
+		scanner.close();
+	}
 
-       
-        scanner.close();
-    }
-	//Ultimo num id
-	  public static int ultimoNumero(String rutaArchivo) throws IOException {
-	        // Crear un objeto File para el archivo en la ruta especificada
-	        File archivo = new File(rutaArchivo);
-	        
-	        Scanner scanner = new Scanner(archivo);
+	// Ultimo num id
+	public static int ultimoNumero(String rutaArchivo) throws IOException {
+		// Crear un objeto File para el archivo en la ruta especificada
+		File archivo = new File(rutaArchivo);
+		Scanner scanner = new Scanner(archivo);
 
-	        int ultimo = 0;
-	        while (scanner.hasNextInt()) {
-	            ultimo = scanner.nextInt();
-	        }
+		int ultimo = 0;
+		while (scanner.hasNextInt()) {
+			ultimo = scanner.nextInt();
+		}
 
-	     
-	        scanner.close();
+		scanner.close();
+		return ultimo;
+	}
 
-	        return ultimo;
-	    }
 	// GUARDAR USUARIOS EN FICHERO TXT
-	public static void guardarUsuario(int conID, String nombre, String apellidos, String email, String contraseña,
+	public static void guardarUsuario(int ID, String nombre, String apellidos, String email, String contraseña,
 			String poblacion, String rol, String fecha) {
 		try {
 			File file = new File("src/com/proyecto/utils/usersGuardados.txt");
-			
 			PrintWriter escriureUser = new PrintWriter(new FileWriter(file, true));
 
 			// Escribir los datos del usuario en un formato fijo
-			String datos = String.format("%-3d|%-18s|%-18s|%-30s|%-18s|%-13s|%-12s|%-14s", conID, nombre, apellidos,
+			String datos = String.format("%03d|%-18s|%-18s|%-30s|%-18s|%-13s|%-12s|%-14s", ID, nombre, apellidos,
 					email, contraseña, poblacion, rol, fecha);
 
-			// Comprobar  si el archivo está vacío para escribir el encabezado
+			// Comprobar si el archivo está vacío para escribir el encabezado
 			if (file.length() == 0) {
 				escriureUser.println(
 						"ID | Nombre           | Apellidos        | Email                        | Contraseña       | Población   | Rol        | Fecha        ");
@@ -143,17 +138,11 @@ public class Funciones {
 			System.out.println("Error: " + e);
 		}
 	}
-	
+
 	// LOGIN USUARIO //
 
 	// ELIMINAR USUARIO //
 
 	// ETC ETC //
-	public static int getConId() {
-		return conId;
-	}
-	public static void setConId(int conId) {
-		Funciones.conId = conId;
-	}
-	
+
 }
