@@ -103,7 +103,7 @@ public class Funciones {
 
 		int ultimo = 0;
 		while (scanner.hasNextInt()) {
-			ultimo = scanner.nextInt();
+			ultimo = scanner.nextInt(); 
 		}
 
 		scanner.close();
