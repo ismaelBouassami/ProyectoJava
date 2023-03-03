@@ -80,7 +80,7 @@ public class Main {
 
 						do {
 							System.out.println(
-									"\n-> 1. Ver Peliculas \n-> 2. Ver Actores \n-> 3. Ver Directores \n-> 4. Salir");
+									"\n-> 1. Añadir Peliculas \n-> 2. Añadir Actores \n-> 3. Añadir Directores \n-> 4. Salir");
 							menuTerciario = ControlErrores.validarTerciario();
 							switch (menuTerciario) {
 							case 1:
@@ -103,7 +103,7 @@ public class Main {
 
 						do {
 							System.out.println(
-									"\n-> 1. Ver Peliculas \n-> 2. Ver Actores \n-> 3. Ver Directores \n-> 4. Salir");
+									"\n-> 1. Añadir Peliculas \n-> 2. Añadir Actores \n-> 3. Añadir Directores \n-> 4. Salir");
 							menuTerciario = ControlErrores.validarTerciario();
 							switch (menuTerciario) {
 							case 1:
