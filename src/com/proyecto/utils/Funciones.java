@@ -15,7 +15,6 @@ public class Funciones {
 	public static int conId = 1;
 	public static int finalId = 1;
 
-
 	// REGISTRO USUARIO //
 	public static void registrarUsuario() {
 		System.out.println("Introduce tu nombre de usuario:");
@@ -45,24 +44,59 @@ public class Funciones {
 		// Con este metodo podremos ver cual fue el ultimo id utilizado, ahora
 		// simplemente debemos aumentar 1 en el id para el siguiente use
 		try {
+
 			int numeroId = 0;
 			numeroId = ultimoNumero("src/com/proyecto/utils/idUser.txt");
 
 			conId = numeroId + 1;
-			finalId= conId;
+			finalId = conId;
 			retornarId(conId, "src/com/proyecto/utils/idUser.txt");
 		} catch (Exception e) {
 			System.out.println("No se ha podido crear tu id");
 		}
-		
+
 		// Array List (Actor, Director, Peliculas) como null, para guardar solo la
 		// información de los usuarios
-		Cliente N1 = new Cliente(finalId, usuario, apellidos, contraseña, email, poblacion, rol, fecha, null, null, null);
-		System.out.println("\n"+N1.toString());
+		Cliente N1 = new Cliente(finalId, usuario, apellidos, contraseña, email, poblacion, rol, fecha, null, null,
+				null);
+		System.out.println("\n" + N1.toString());
 
 		// Pasamos los parametros del objeto a la funcíon guardar usuarios
 		guardarUsuario(finalId, usuario, apellidos, email, contraseña, poblacion, rol, fecha);
 
+		crearCarpeta(finalId, email);
+
+	}
+
+	public static void crearCarpeta(int id, String email) {
+		String nombreCarpeta = "";
+		int posFinal = email.lastIndexOf("@");
+		// String emailComproba=email;
+		email = email.substring(0, posFinal);
+
+		nombreCarpeta = "" + id + email;
+
+		try {
+			File NuevaCarpeta = new File("src/com/proyecto/usuariosCarpetas/" + nombreCarpeta);
+			boolean creado = NuevaCarpeta.mkdir();
+			if (creado == true) {
+				File listACtor = new File("src/com/proyecto/usuariosCarpetas/" + nombreCarpeta + "/actor.llista");
+				File listDirector = new File("src/com/proyecto/usuariosCarpetas/" + nombreCarpeta + "/director.llista");
+				File listPelicula = new File("src/com/proyecto/usuariosCarpetas/" + nombreCarpeta + "/pelicula.llista");
+
+				listACtor.createNewFile();
+				listDirector.createNewFile();
+				listPelicula.createNewFile();
+
+				System.out.println("Se ha creado correctamente");
+			} else {
+				System.out.println("No se ha podido crear(quizas el usuario ya existe)");
+				System.out.println("Vuelve a registrar tu usuario ");
+				Funciones.registrarUsuario();
+			}
+		} catch (Exception e) {
+			System.out.println("Error: " + e);
+		}
 	}
 
 	// Crear archivo id
@@ -118,8 +152,8 @@ public class Funciones {
 			PrintWriter escriureUser = new PrintWriter(new FileWriter(file, true));
 
 			// Escribir los datos del usuario en un formato fijo
-			String datos = String.format("%03d|%-18s|%-18s|%-30s|%-18s|%-13s|%-12s|%-14s", ID, nombre, apellidos,
-					email, contraseña, poblacion, rol, fecha);
+			String datos = String.format("%03d|%-18s|%-18s|%-30s|%-18s|%-13s|%-12s|%-14s", ID, nombre, apellidos, email,
+					contraseña, poblacion, rol, fecha);
 
 			// Comprobar si el archivo está vacío para escribir el encabezado
 			if (file.length() == 0) {
