@@ -2,3 +2,4 @@ ID | Nombre           | Apellidos        | Email                        | Contra
 ---+------------------+------------------+------------------------------+------------------+-------------+------------+--------------
 001|joselu            |juan              |jose@jose.com                 |canals            |canals       |ROL_USUARI  |30-04-2002    
 002|juan              |jose              |juan@juan.com                 |xativa            |canals       |ROL_USUARI  |3033030       
+003|hugo              |sanchiz           |hugo@gmail.com                |ismael            |isma         |ROL_USUARI  |isma          
