@@ -179,7 +179,7 @@ public class Funciones {
 	public static boolean validaUsuario() {
 
 		try {
-			File f=new File("usersGuardados.txt");
+			File f=new File("src/com/proyecto/utils/usersGuardados.txt");
 			FileReader fr= new FileReader(f);
 			BufferedReader br = new BufferedReader(fr);
 			

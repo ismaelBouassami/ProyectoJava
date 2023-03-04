@@ -22,7 +22,7 @@ public class Main {
 			case 2:
 				///// AQUI IRA LA FUNCION DE loginUser() ///////////
 				System.out.println("-----Iniciar Sesion-----");
-
+				Funciones.validaUsuario();
 				do {
 					System.out.println(
 							"\n-> 1. Ver lista general \n-> 2. Ver lista personal \n-> 3. Añadir nuevo elemento a lista general \n-> 4. Añadir nuevo elemento a lista personal \n-> 5. Salir");
