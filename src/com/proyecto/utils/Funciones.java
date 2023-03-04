@@ -176,12 +176,18 @@ public class Funciones {
 	}
 
 	// LOGIN USUARIO //
-	public static boolean validaUsuario(String nombre, String contraseña) {
+	public static boolean validaUsuario() {
 
 		try {
-			File f=new File("Fitxers"+File.separator+"file.txt");
+			File f=new File("usersGuardados.txt");
 			FileReader fr= new FileReader(f);
 			BufferedReader br = new BufferedReader(fr);
+			
+			System.out.println("Introduce el nombre de usuario: ");
+			String usr = ControlErrores.validarString();
+			
+			System.out.println("Introduce la contraseña: ");
+			String pwd = ControlErrores.validarString();
 			
 			String linia=br.readLine(); linia=br.readLine();
 			boolean trobat=false;
@@ -190,14 +196,14 @@ public class Funciones {
 				String[] dades=linia.split("[|]");
 				dades[1]=dades[1].trim();
 				dades[4]=dades[4].trim();
-				if(dades[1].equals(nombre)) {
+				if(dades[1].equals(usr)) {
 					trobat=true;
-					if(dades[4].equals(contraseña)) {
-						System.out.println("Login satisfactorio para el usuario "+nombre);
+					if(dades[4].equals(pwd)) {
+						System.out.println("Login satisfactorio para el usuario "+usr);
 						login=true;
 					}else {
 						trobat=true;
-						System.out.println("ERROR. Contraseña errónea para el usuario "+nombre);
+						System.out.println("ERROR. Contraseña errónea para el usuario "+usr);
 					}
 				}
 			}
