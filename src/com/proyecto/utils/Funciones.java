@@ -1,6 +1,8 @@
 package com.proyecto.utils;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -174,7 +176,45 @@ public class Funciones {
 	}
 
 	// LOGIN USUARIO //
+	public static boolean validaUsuario() {
 
+		try {
+			File f=new File("usersGuardados.txt");
+			FileReader fr= new FileReader(f);
+			BufferedReader br = new BufferedReader(fr);
+			
+			System.out.println("Introduce el nombre de usuario: ");
+			String usr = ControlErrores.validarString();
+			
+			System.out.println("Introduce la contraseña: ");
+			String pwd = ControlErrores.validarString();
+			
+			String linia=br.readLine(); linia=br.readLine();
+			boolean trobat=false;
+			boolean login=false;
+			while((linia=br.readLine())!=null && !trobat) {
+				String[] dades=linia.split("[|]");
+				dades[1]=dades[1].trim();
+				dades[4]=dades[4].trim();
+				if(dades[1].equals(usr)) {
+					trobat=true;
+					if(dades[4].equals(pwd)) {
+						System.out.println("Login satisfactorio para el usuario "+usr);
+						login=true;
+					}else {
+						trobat=true;
+						System.out.println("ERROR. Contraseña errónea para el usuario "+usr);
+					}
+				}
+			}
+			br.close();
+			return login;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return false;
+		}
+	
+	}
 	// ELIMINAR USUARIO //
 
 	// ETC ETC //
