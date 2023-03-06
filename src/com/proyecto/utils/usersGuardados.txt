@@ -1,3 +1,3 @@
-ID | Nombre           | Apellidos        | Email                        | Contraseña       | Población   | Rol        | Fecha        
----+------------------+------------------+------------------------------+------------------+-------------+------------+--------------
-001|joselu            |juan              |joselu@hotmail.com            |canals            |canals       |ROL_USUARI  |212           
+USUARIO          |ID | Nombre           | Apellidos        | Email                        | Contraseña       | Población   | Rol        | Fecha        
+-----------------+---+------------------+------------------+------------------------------+------------------+-------------+------------+--------------
+1josejose        |001|joseluis          |juan              |josejose@gg.com               |canals            |canals       |USUARIO     |nopreguntes   

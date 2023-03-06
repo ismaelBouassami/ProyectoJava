@@ -13,11 +13,16 @@ public class User {
 	protected String contrasenia;
 	protected String email;
 	protected String poblacion;
-	protected String rol;
 	protected String fechaNacimiento;
+	 
+	Rol roles;
 
+	public enum Rol{
+		USUARIO, ADMIN
+	}
+	
 	/// CONTRUCTOR ///
-	public User(int id, String nombre, String apellidos, String contrasenia, String email, String poblacion, String rol,
+	public User(int id, String nombre, String apellidos, String contrasenia, String email, String poblacion, Rol roles,
 			String fechaNacimiento) {
 
 		super();
@@ -34,7 +39,7 @@ public class User {
 		this.contrasenia = contrasenia;
 		this.email = email;
 		this.poblacion = poblacion;
-		this.rol = rol;
+		this.roles = roles;
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
@@ -88,12 +93,12 @@ public class User {
 		this.poblacion = poblacion;
 	}
 
-	public String getRol() {
-		return rol;
+	public Rol getRoles() {
+		return roles;
 	}
 
-	public void setRol(String rol) {
-		this.rol = rol;
+	public void setRoles(Rol roles) {
+		this.roles = roles;
 	}
 
 	public String getFechaNacimiento() {
@@ -158,7 +163,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "Id: " + id + "\nNombre: " + nombre + "\nApellidos: " + apellidos + "\nContraseña: " + contrasenia
-				+ "\nEmail: " + email + "\nPoblacion: " + poblacion + "\nRol: " + rol + "\nFecha Nacimiento: "
+				+ "\nEmail: " + email + "\nPoblacion: " + poblacion + "\nRol: " + roles + "\nFecha Nacimiento: "
 				+ fechaNacimiento;
 	}
 

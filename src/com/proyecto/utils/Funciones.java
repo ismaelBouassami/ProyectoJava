@@ -9,6 +9,8 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 import com.proyecto.users.Cliente;
+import com.proyecto.users.User;
+import com.proyecto.users.User.Rol;
 
 public class Funciones {
 	static Scanner leer = new Scanner(System.in);
@@ -17,10 +19,12 @@ public class Funciones {
 	public static int conId = 1;
 	public static int finalId = 1;
 
+	//Varible nombre usuario
+	public static String nomUser = "";
+
 	// REGISTRO USUARIO //
 	public static void registrarUsuario() {
-		int conId=1;
-		System.out.println("Introduce tu nombre de usuario");
+		System.out.println("Introduce tu nombre:");
 		String usuario = ControlErrores.validarString();
 
 		System.out.println("Introduce los apellidos:");
@@ -37,9 +41,6 @@ public class Funciones {
 
 		// pedir contraseña
 		String contraseña = ControlErrores.pedirContraseña();
-
-		// Usuarios registrados con rol
-		String rol = "ROL_USUARI";
 
 		// registro finish
 		System.out.println("Registro completado");
@@ -58,51 +59,59 @@ public class Funciones {
 			System.out.println("No se ha podido crear tu id");
 		}
 
+		// Creamos el usuario con la funcion
+		nomUser = obtenerNomUser(finalId, email);
+
 		// Array List (Actor, Director, Peliculas) como null, para guardar solo la
 		// información de los usuarios
-		Cliente N1 = new Cliente(finalId, usuario, apellidos, contraseña, email, poblacion, rol, fecha, null, null,
-				null);
+		Cliente N1 = new Cliente(finalId, usuario, apellidos, contraseña, email, poblacion, User.Rol.USUARIO, fecha,
+				null, null, null);
+		// Mostramos los datos del cliente y su numro de usuario
 		System.out.println("\n" + N1.toString());
+		System.out.println("Tu nombre de usuario es: " + nomUser);
 
 		// Pasamos los parametros del objeto a la funcíon guardar usuarios
-		guardarUsuario(finalId, usuario, apellidos, email, contraseña, poblacion, rol, fecha);
-
-		crearCarpeta(finalId, email);
+		guardarUsuario(nomUser, finalId, usuario, apellidos, email, contraseña, poblacion, User.Rol.USUARIO, fecha);
+		// Pasamos el parametro usuario para crear carpeta
+		crearCarpeta(nomUser);
 
 	}
 
-	public static void crearCarpeta(int id, String email) {
-		String nombreCarpeta = "";
+	// OBTENER NOMBRE USUARIO
+	public static String obtenerNomUser(int id, String email) {
 		int posFinal = email.lastIndexOf("@");
-		// String emailComproba=email;
 		email = email.substring(0, posFinal);
+		return nomUser = "" + id + email;
+	}
 
-		nombreCarpeta = "" + id + email;
+	// CREAR CARPETA USUARIO Y LISTAS
+	public static String crearCarpeta(String nomUser) {
 
 		try {
-			File NuevaCarpeta = new File("src/com/proyecto/usuariosCarpetas/" + nombreCarpeta);
+			File NuevaCarpeta = new File("src/com/proyecto/usuariosCarpetas/" + nomUser);
 			boolean creado = NuevaCarpeta.mkdir();
 			if (creado == true) {
-				File listACtor = new File("src/com/proyecto/usuariosCarpetas/" + nombreCarpeta + "/actor.llista");
-				File listDirector = new File("src/com/proyecto/usuariosCarpetas/" + nombreCarpeta + "/director.llista");
-				File listPelicula = new File("src/com/proyecto/usuariosCarpetas/" + nombreCarpeta + "/pelicula.llista");
+				File listACtor = new File("src/com/proyecto/usuariosCarpetas/" + nomUser + "/actor.llista");
+				File listDirector = new File("src/com/proyecto/usuariosCarpetas/" + nomUser + "/director.llista");
+				File listPelicula = new File("src/com/proyecto/usuariosCarpetas/" + nomUser + "/pelicula.llista");
 
 				listACtor.createNewFile();
 				listDirector.createNewFile();
 				listPelicula.createNewFile();
 
-				System.out.println("Se ha creado correctamente");
+				System.out.println("El usuario se ha creado correctamente");
 			} else {
-				System.out.println("No se ha podido crear(quizas el usuario ya existe)");
-				System.out.println("Vuelve a registrar tu usuario ");
+				System.out.println("No se ha podido crear el usuario (quizas el usuario ya existe)");
+				System.out.println("Vuelve a registrar tu usuario: ");
 				Funciones.registrarUsuario();
 			}
 		} catch (Exception e) {
 			System.out.println("Error: " + e);
 		}
+		return nomUser;
 	}
 
-	// Crear archivo id
+	// CREAR ARCHIVO ID
 	public static void retornarId(int numero, String rutaArchivo) throws IOException {
 		// Crear un objeto File para el archivo en la ruta especificada
 		File archivo = new File(rutaArchivo);
@@ -140,7 +149,7 @@ public class Funciones {
 
 		int ultimo = 0;
 		while (scanner.hasNextInt()) {
-			ultimo = scanner.nextInt(); 
+			ultimo = scanner.nextInt();
 		}
 
 		scanner.close();
@@ -148,22 +157,22 @@ public class Funciones {
 	}
 
 	// GUARDAR USUARIOS EN FICHERO TXT
-	public static void guardarUsuario(int ID, String nombre, String apellidos, String email, String contraseña,
-			String poblacion, String rol, String fecha) {
+	public static void guardarUsuario(String nomUser, int ID, String nombre, String apellidos, String email,
+			String contraseña, String poblacion, Rol rol, String fecha) {
 		try {
 			File file = new File("src/com/proyecto/utils/usersGuardados.txt");
 			PrintWriter escriureUser = new PrintWriter(new FileWriter(file, true));
 
 			// Escribir los datos del usuario en un formato fijo
-			String datos = String.format("%03d|%-18s|%-18s|%-30s|%-18s|%-13s|%-12s|%-14s", ID, nombre, apellidos, email,
-					contraseña, poblacion, rol, fecha);
+			String datos = String.format("%-17s|%03d|%-18s|%-18s|%-30s|%-18s|%-13s|%-12s|%-14s", nomUser, ID, nombre,
+					apellidos, email, contraseña, poblacion, rol, fecha);
 
 			// Comprobar si el archivo está vacío para escribir el encabezado
 			if (file.length() == 0) {
 				escriureUser.println(
-						"ID | Nombre           | Apellidos        | Email                        | Contraseña       | Población   | Rol        | Fecha        ");
+						"USUARIO          |ID | Nombre           | Apellidos        | Email                        | Contraseña       | Población   | Rol        | Fecha        ");
 				escriureUser.println(
-						"---+------------------+------------------+------------------------------+------------------+-------------+------------+--------------");
+						"-----------------+---+------------------+------------------+------------------------------+------------------+-------------+------------+--------------");
 			}
 
 			// Escribir los datos del usuario en el archivo
@@ -180,41 +189,38 @@ public class Funciones {
 	public static boolean validaUsuario() {
 
 		try {
-			File f=new File("src/com/proyecto/utils/usersGuardados.txt");
-			
-			FileReader fr= new FileReader(f);
+			File f = new File("src/com/proyecto/utils/usersGuardados.txt");
+			FileReader fr = new FileReader(f);
 			BufferedReader br = new BufferedReader(fr);
-			
-			System.out.println("Introduce el nombre de usuario (tu id + tu e-mail hasta el @, ejemplo: 3pedro para el usuario con id=3 y e-mail pedro@gmail.com): ");
+
+			System.out.println("Introduce el nombre de usuario: ");
 			String usr = ControlErrores.validarString();
-			
+
 			System.out.println("Introduce la contraseña: ");
 			String pwd = ControlErrores.validarString();
-			
-			String linia=br.readLine(); linia=br.readLine();
-			boolean trobat=false;
-			boolean login=false;
-			boolean comprova=true;
-			int comptaId=1;
-			while((linia=br.readLine())!=null && !trobat) {
-				if (comprova) {
-					String[] dades=linia.split("[|]");
-					dades[3]=dades[3].substring(0,dades[3].lastIndexOf("@"));
-					dades[4]=dades[4].trim();
-					String provaUsr=comptaId+dades[3];
-					if(provaUsr.equals(usr)) {
+
+			String linia = br.readLine();
+			linia = br.readLine();
+			boolean trobat = false;
+			boolean login = false;
+			while ((linia = br.readLine()) != null && !trobat) {
+				String[] dades = linia.split("[|]");
+				dades[0] = dades[0].trim();
+				dades[5] = dades[5].trim();
+				System.out.println(dades[0]);
+				System.out.println(dades[5]);
+				if (dades[0].equals(usr)) {
+					trobat = true;
+					if (dades[5].equals(pwd)) {
+						System.out.println("Login satisfactorio para el usuario " + usr);
+						login = true;
+					} else {
 						trobat=true;
-						if(dades[4].equals(pwd)) {
-							System.out.println("Login satisfactorio para el usuario "+usr);
-							login=true;
-						}else {
-							trobat=true;
-							System.out.println("ERROR. Contraseña errónea para el usuario "+usr);
-						}
+						System.out.println("ERROR. Contraseña errónea para el usuario " + usr);
 					}
 					comptaId++;
 				}
-				comprova=!comprova;
+				
 			}
 			br.close();
 			return login;
@@ -222,7 +228,7 @@ public class Funciones {
 			e.printStackTrace();
 			return false;
 		}
-	
+
 	}
 	// ELIMINAR USUARIO //
 

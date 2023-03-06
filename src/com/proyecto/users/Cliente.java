@@ -15,7 +15,7 @@ public class Cliente extends User {
 
 	/// CONSTRUCTOR
 	public Cliente(int id,String nombre, String apellidos, String contrasenia, String email, String poblacion,
-			String rol, String fechaNacimiento, List<Actor> actores, List<Director> directores,
+			Rol rol, String fechaNacimiento, List<Actor> actores, List<Director> directores,
 			List<Pelicula> peliculas) {
 		super(id,nombre, apellidos, contrasenia, email, poblacion, rol, fechaNacimiento);
 		this.actores = actores;
