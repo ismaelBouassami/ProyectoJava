@@ -19,7 +19,7 @@ public class Funciones {
 	public static int conId = 1;
 	public static int finalId = 1;
 
-	//Varible nombre usuario
+	// Varible nombre usuario
 	public static String nomUser = "";
 
 	// REGISTRO USUARIO //
@@ -213,14 +213,14 @@ public class Funciones {
 						System.out.println("Login satisfactorio para el usuario " + usr);
 						login = true;
 					} else {
-						trobat=true;
+						trobat = true;
 						System.out.println("ERROR. Contraseña errónea para el usuario " + usr);
 					}
 				}
-				
+
 			}
-			if (!login) {
-				System.out.println("ERROR. No se encontró un usuario con el nombre: "+usr);
+			if (!trobat) {
+				System.out.println("ERROR. No se encontró un usuario con el nombre: " + usr);
 			}
 			br.close();
 			return login;
