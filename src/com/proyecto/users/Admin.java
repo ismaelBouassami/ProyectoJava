@@ -1,95 +1,58 @@
 package com.proyecto.users;
 
-import java.util.Date;
+import java.util.List;
+
+import com.proyecto.clases.Actor;
+import com.proyecto.clases.Director;
+import com.proyecto.clases.Pelicula;
 
 public class Admin extends User {
-	
-	private String rol;
-	private String fechaAlta;
 
-	
-	
-	
-	
-	
-	public Admin(String nombre, String apellidos, String email, String contraseña, String poblacion, String rol,
-			String fechaNacimiento2, String rol2, String fechaAlta) {
-		super(nombre, apellidos, email, contraseña, poblacion, rol, fechaNacimiento2);
-		rol = rol2;
-		this.fechaAlta = fechaAlta;
+	private List<Actor> actores;
+	private List<Director> directores;
+	private List<Pelicula> peliculas;
+
+	/// CONSTRUCTOR ///
+	public Admin(int id,String nombre, String apellidos, String contrasenia, String email, String poblacion, String rol,
+			String fechaNacimiento, List<Actor> actores, List<Director> directores, List<Pelicula> peliculas) {
+		super(id,nombre, apellidos, contrasenia, email, poblacion, rol, fechaNacimiento);
+		this.actores = actores;
+		this.directores = directores;
+		this.peliculas = peliculas;
 	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getApellidos() {
-		return apellidos;
-	}
-
-	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getContraseña() {
-		return contraseña;
-	}
-
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
-	}
-
-	public String getRol() {
-		return rol;
-	}
-
-	public void setRol(String rol) {
-		this.rol = rol;
-	}
-
-	public String getFechaAlta() {
-		return fechaAlta;
-	}
-
-	public void setFechaAlta(String fechaAlta) {
-		this.fechaAlta = fechaAlta;
-	}
-
 	
 
-	public void crearLista() {
+	/// GETTERS Y SETTERS
+	public List<Actor> getActores() {
+		return actores;
+	}
+
+	public void setActores(List<Actor> actores) {
+		this.actores = actores;
+	}
+
+	public List<Director> getDirectores() {
+		return directores;
+	}
+
+	public void setDirectores(List<Director> directores) {
+		this.directores = directores;
+	}
+
+	public List<Pelicula> getPeliculas() {
+		return peliculas;
+	}
+
+	public void setPeliculas(List<Pelicula> peliculas) {
+		this.peliculas = peliculas;
+	}
+
+	public void visualizarClientes(Cliente idCliente) {
 
 	}
 
-	public void consultarLista() {
+	public void eliminarClientes(Cliente idCliente) {
 
 	}
 
-	public void modificarLista() {
-
-	}
-
-	public void eliminarLista() {
-
-	}
-
-	public void consultarUsuarios() {
-
-	}
-
-	public void eliminarUsuarios() {
-
-	}
 }

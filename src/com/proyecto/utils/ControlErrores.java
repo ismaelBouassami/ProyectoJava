@@ -6,6 +6,77 @@ import java.util.regex.Pattern;
 
 public class ControlErrores {
 
+	///  VALIDAR MENU PRINCIPAL ///
+	public static int validarMenuPrincipal() {
+		int n = 0;
+		boolean correcto = false;
+		Scanner entrada = new Scanner(System.in);
+
+		do {
+			if (!entrada.hasNextInt()) {
+				System.out.println("Error: No has introducido un numero.");
+				entrada.nextLine();
+			} else {
+				n = entrada.nextInt();
+				if (n == 3 || n == 1 || n == 2) {
+					correcto = true;
+				} else {
+					System.out.println("Error: El numero introducido debe 1, 2  o 3.");
+					entrada.nextLine();
+				}
+			}
+		} while (!correcto);
+
+		return n;
+	}
+	/// VALIDAR MENU SECUNDARIO ///
+	public static int validarSecundario() {
+		int n = 0;
+		boolean correcto = false;
+		Scanner entrada = new Scanner(System.in);
+
+		do {
+			if (!entrada.hasNextInt()) {
+				System.out.println("Error: No has introducido un numero.");
+				entrada.nextLine();
+			} else {
+				n = entrada.nextInt();
+				if (n == 1 || n == 2 || n == 3 || n == 4 || n == 5) {
+					correcto = true;
+				} else {
+					System.out.println("Error: El numero introducido debe ser 1, 2, 3, 4 o 5.");
+					entrada.nextLine();
+				}
+			}
+		} while (!correcto);
+
+		return n;
+	}
+	
+	/// VALIDAR MENU TERCIARIO ///
+	public static int validarTerciario() {
+		int n = 0;
+		boolean correcto = false;
+		Scanner entrada = new Scanner(System.in);
+
+		do {
+			if (!entrada.hasNextInt()) {
+				System.out.println("Error: No has introducido un numero.");
+				entrada.nextLine();
+			} else {
+				n = entrada.nextInt();
+				if (n == 1 || n == 2 || n == 3 || n == 4) {
+					correcto = true;
+				} else {
+					System.out.println("Error: El numero introducido debe ser 1, 2, 3 o 4.");
+					entrada.nextLine();
+				}
+			}
+		} while (!correcto);
+
+		return n;
+	}
+	
 	// VALIDAR UN INTEGER //
 	public static int validarInt() {
 		int n = 0;
@@ -18,19 +89,12 @@ public class ControlErrores {
 				entrada.nextLine();
 			} else {
 				n = entrada.nextInt();
-				if (n == -1 || n == 1 || n == 2) {
-					correcto = true;
-				} else {
-					System.out.println("Error: El numero introducido debe ser : 1, 2  o -1.");
-					entrada.nextLine();
-				}
+				correcto = true;
 			}
 		} while (!correcto);
 
 		return n;
 	}
-
-	// VALIDAR UN FLOAT //
 
 	// VALIDAR UN STRING //
 	public static String validarString() {
@@ -81,29 +145,24 @@ public class ControlErrores {
 
 		return password;
 	}
+
 	// VALIDAR UN CORREO ELECTRONICO
 	public static String validarEmail() {
 		Scanner entrada = new Scanner(System.in);
-		String email="";
-		boolean correcto=false;
+		String email = "";
+		boolean correcto = false;
 		do {
-			
-			email = entrada.nextLine();			
+
+			email = entrada.nextLine();
 			if (!Pattern.compile("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$").matcher(email).find()) {
 				System.out.println("Email no valido vuelve a introducirlo");
-
-				
-			}else {
-				correcto=true;
+			} else {
+				correcto = true;
 			}
-			
 		} while (!correcto);
-		
-		
+
 		return email;
-		
 	}
-	
 
 	// VALIDAR UN FILE //
 
