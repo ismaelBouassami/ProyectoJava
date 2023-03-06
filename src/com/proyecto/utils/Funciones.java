@@ -207,8 +207,6 @@ public class Funciones {
 				String[] dades = linia.split("[|]");
 				dades[0] = dades[0].trim();
 				dades[5] = dades[5].trim();
-				System.out.println(dades[0]);
-				System.out.println(dades[5]);
 				if (dades[0].equals(usr)) {
 					trobat = true;
 					if (dades[5].equals(pwd)) {
@@ -220,6 +218,9 @@ public class Funciones {
 					}
 				}
 				
+			}
+			if (!login) {
+				System.out.println("ERROR. No se encontró un usuario con el nombre: "+usr);
 			}
 			br.close();
 			return login;
