@@ -181,10 +181,11 @@ public class Funciones {
 
 		try {
 			File f=new File("src/com/proyecto/utils/usersGuardados.txt");
+			
 			FileReader fr= new FileReader(f);
 			BufferedReader br = new BufferedReader(fr);
 			
-			System.out.println("Introduce el nombre de usuario: ");
+			System.out.println("Introduce el nombre de usuario (tu id + tu e-mail hasta el @, ejemplo: 3pedro para el usuario con id=3 y e-mail pedro@gmail.com): ");
 			String usr = ControlErrores.validarString();
 			
 			System.out.println("Introduce la contraseña: ");
@@ -193,20 +194,27 @@ public class Funciones {
 			String linia=br.readLine(); linia=br.readLine();
 			boolean trobat=false;
 			boolean login=false;
+			boolean comprova=true;
+			int comptaId=1;
 			while((linia=br.readLine())!=null && !trobat) {
-				String[] dades=linia.split("[|]");
-				dades[1]=dades[1].trim();
-				dades[4]=dades[4].trim();
-				if(dades[1].equals(usr)) {
-					trobat=true;
-					if(dades[4].equals(pwd)) {
-						System.out.println("Login satisfactorio para el usuario "+usr);
-						login=true;
-					}else {
+				if (comprova) {
+					String[] dades=linia.split("[|]");
+					dades[3]=dades[3].substring(0,dades[3].lastIndexOf("@"));
+					dades[4]=dades[4].trim();
+					String provaUsr=comptaId+dades[3];
+					if(provaUsr.equals(usr)) {
 						trobat=true;
-						System.out.println("ERROR. Contraseña errónea para el usuario "+usr);
+						if(dades[4].equals(pwd)) {
+							System.out.println("Login satisfactorio para el usuario "+usr);
+							login=true;
+						}else {
+							trobat=true;
+							System.out.println("ERROR. Contraseña errónea para el usuario "+usr);
+						}
 					}
+					comptaId++;
 				}
+				comprova=!comprova;
 			}
 			br.close();
 			return login;
