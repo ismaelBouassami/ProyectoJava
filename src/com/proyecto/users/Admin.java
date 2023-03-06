@@ -13,7 +13,7 @@ public class Admin extends User {
 	private List<Pelicula> peliculas;
 
 	/// CONSTRUCTOR ///
-	public Admin(int id,String nombre, String apellidos, String contrasenia, String email, String poblacion, String rol,
+	public Admin(int id,String nombre, String apellidos, String contrasenia, String email, String poblacion, Rol rol,
 			String fechaNacimiento, List<Actor> actores, List<Director> directores, List<Pelicula> peliculas) {
 		super(id,nombre, apellidos, contrasenia, email, poblacion, rol, fechaNacimiento);
 		this.actores = actores;
