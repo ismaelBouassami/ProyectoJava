@@ -1,8 +1,5 @@
 package com.proyecto.main;
 
-import java.util.ArrayList;
-
-
 import com.proyecto.utils.ControlErrores;
 import com.proyecto.utils.Funciones;
 
@@ -42,7 +39,7 @@ public class Main {
 								switch (menuTerciario) {
 								case 1:
 									System.out.println("-----Ver Peliculas (Lista GENERAL)-----");
-//									Funciones.mostrarLista();
+									Funciones.mostrarListaPelicula();
 									break;
 								case 2:
 									System.out.println("-----Ver Actores (Lista GENERAL)-----");
@@ -90,6 +87,7 @@ public class Main {
 								switch (menuTerciario) {
 								case 1:
 									System.out.println("-----Añádir Peliculas (Lista GENERAL)-----");
+									Funciones.registrarListaPelicula();
 									break;
 								case 2:
 									System.out.println("-----Añádir Actores (Lista GENERAL)-----");

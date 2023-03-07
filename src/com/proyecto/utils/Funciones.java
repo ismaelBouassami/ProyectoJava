@@ -3,10 +3,12 @@ package com.proyecto.utils;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -70,7 +72,7 @@ public class Funciones {
 		// información de los usuarios
 		Cliente N1 = new Cliente(finalId, usuario, apellidos, contraseña, email, poblacion, User.Rol.USUARIO, fecha,
 				null, null, null);
-		
+
 		// Mostramos los datos del cliente y su numro de usuario
 		System.out.println("\n" + N1.toString());
 		System.out.println("Tu nombre de usuario es: " + nomUser);
@@ -216,14 +218,13 @@ public class Funciones {
 					trobat = true;
 					if (dades[5].equals(pwd)) {
 						System.out.println("Login satisfactorio para el usuario " + usr);
-						//missatge benvinguda, nom apellido
+						// missatge benvinguda, nom apellido
 						login = true;
 					} else {
 						trobat = true;
 						System.out.println("ERROR. Contraseña errónea para el usuario " + usr);
 					}
 				}
-
 			}
 			if (!trobat) {
 				System.out.println("ERROR. No se encontró un usuario con el nombre: " + usr);
@@ -234,25 +235,70 @@ public class Funciones {
 			e.printStackTrace();
 			return false;
 		}
-		
-
 	}
-	//MOSTRAR LISTAS
-	
+
+	// PEDIR DATOS PELICULA
+	public static void registrarListaPelicula() {
+		System.out.println("Introduce el nombre de la pelcula:");
+		String pelicula = ControlErrores.validarString();
+
+		System.out.println("Introduce la duración:");
+		int duracio = ControlErrores.validarInt();
+
+		System.out.println("Introduce la fecha de emision:");
+		String fechaEmisio = ControlErrores.validarString();
+
+		System.out.println("Introduce el genero");
+		String genero = ControlErrores.validarString();
+		
+		guardarListaGeneralPelicula(pelicula, duracio, fechaEmisio, genero);
+	}
+
+	public static void guardarListaGeneralPelicula(String pelicula, int duracio, String fechaEmisio, String genero) {
+		ArrayList<Pelicula> PelisGeneral = new ArrayList<Pelicula>();
+		Pelicula peliculasCreadas = new Pelicula(pelicula, duracio, fechaEmisio, genero);
+		PelisGeneral.add(peliculasCreadas);
+
+		// serialització
+		ObjectOutputStream oos = null;
+		FileOutputStream fout = null;
+		try {
+			// obrim el fitxer per escriure, sense afegir
+			// només tindrem un ArrayList d'objectes
+			fout = new FileOutputStream("src/com/proyecto/listasPeliculas/peliculas.llista", false);
+			oos = new ObjectOutputStream(fout);
+			// escrivim ArrayList sencer en el fitxer (1 sol objecte)
+			oos.writeObject(PelisGeneral);
+			oos.flush();
+			oos.close();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (oos != null) {
+				try {
+					oos.close();
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
+			}
+		}
+	}
+
+	// MOSTRAR LISTAS
 	public static void mostrarListaPelicula() {
 		ArrayList<Pelicula> PelisGeneral = new ArrayList<Pelicula>();
-		
+
 		try {
 			// obrim fitxer per a lectura
-			FileInputStream file = new FileInputStream("../src/com/proyecto/listasPeliculas/peliculas.llista");
+			FileInputStream file = new FileInputStream("src/com/proyecto/listasPeliculas/peliculas.llista");
 			ObjectInputStream reader = new ObjectInputStream(file);
 			try {
-				//llegim l'objecte que hi ha al fitxer (1 sol array List)
+				// llegim l'objecte que hi ha al fitxer (1 sol array List)
 				PelisGeneral = (ArrayList<Pelicula>) reader.readObject();
-				System.out.println("La lista general de pelicules es");
+				System.out.println("\nLa lista general de pelicules es");
 				for (Pelicula peli : PelisGeneral) {
-					  System.out.println(peli.toString());
-					}
+					System.out.println(peli.toString());
+				}
 			} catch (Exception ex) {
 				System.err.println("Se ha mostrado correctamente");
 			}
@@ -263,6 +309,7 @@ public class Funciones {
 			System.err.println("Error en llegir usuaris.dades " + ex);
 		}
 	}
+	
 	// ELIMINAR USUARIO //
 
 	// ETC ETC //
