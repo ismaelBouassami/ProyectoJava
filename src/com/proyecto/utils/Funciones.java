@@ -237,52 +237,8 @@ public class Funciones {
 		}
 	}
 
-	// PEDIR DATOS PELICULA
-	public static void registrarListaPelicula() {
-		System.out.println("Introduce el nombre de la pelcula:");
-		String pelicula = ControlErrores.validarString();
-
-		System.out.println("Introduce la duración:");
-		int duracio = ControlErrores.validarInt();
-
-		System.out.println("Introduce la fecha de emision:");
-		String fechaEmisio = ControlErrores.validarString();
-
-		System.out.println("Introduce el genero");
-		String genero = ControlErrores.validarString();
-		
-		guardarListaGeneralPelicula(pelicula, duracio, fechaEmisio, genero);
-	}
-
-	public static void guardarListaGeneralPelicula(String pelicula, int duracio, String fechaEmisio, String genero) {
-		ArrayList<Pelicula> PelisGeneral = new ArrayList<Pelicula>();
-		Pelicula peliculasCreadas = new Pelicula(pelicula, duracio, fechaEmisio, genero);
-		PelisGeneral.add(peliculasCreadas);
-
-		// serialització
-		ObjectOutputStream oos = null;
-		FileOutputStream fout = null;
-		try {
-			// obrim el fitxer per escriure, sense afegir
-			// només tindrem un ArrayList d'objectes
-			fout = new FileOutputStream("src/com/proyecto/listasPeliculas/peliculas.llista", false);
-			oos = new ObjectOutputStream(fout);
-			// escrivim ArrayList sencer en el fitxer (1 sol objecte)
-			oos.writeObject(PelisGeneral);
-			oos.flush();
-			oos.close();
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			if (oos != null) {
-				try {
-					oos.close();
-				} catch (Exception ex) {
-					ex.printStackTrace();
-				}
-			}
-		}
-	}
+	
+	
 
 	// MOSTRAR LISTAS
 	public static void mostrarListaPelicula() {
