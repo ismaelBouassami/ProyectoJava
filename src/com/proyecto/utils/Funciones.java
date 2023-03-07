@@ -31,7 +31,7 @@ public class Funciones {
 	public static String nomUser = "";
 	public static ArrayList<Pelicula> PelisGeneral = new ArrayList<Pelicula>();
 	public static ArrayList<Director> DirectorGeneral = new ArrayList<Director>();
-	public static ArrayList<Actor> ActorGenero = new ArrayList<Actor>();
+	public static ArrayList<Actor> ActorGeneral = new ArrayList<Actor>();
 
 	// REGISTRO USUARIO //
 	public static void registrarUsuario() {
@@ -322,10 +322,53 @@ public class Funciones {
 	}
 
 	public static void mostrarListaActores() {
+		try {
+			// obrim fitxer per a lectura
+			FileInputStream file = new FileInputStream("src/com/proyecto/listasPeliculas/actores.llista");
+			ObjectInputStream reader = new ObjectInputStream(file);
+			try {
+				// llegim l'objecte que hi ha al fitxer (1 sol array List)
+				ActorGeneral = (ArrayList<Actor>) reader.readObject();
+				System.out.println("La lista general de pelicules es");
+				for (Actor actor : ActorGeneral) {
+					System.out.println(actor.toString());
+					System.out.println();
+				}
+			} catch (Exception ex) {
+				System.err.println("Se ha mostrado correctamente");
+			}
+
+			reader.close();
+			file.close();
+		} catch (Exception ex) {
+			System.err.println("Error en llegir actores.llista " + ex);
 		}
 
-	public static void mostrarListaDirector() {
+	}
 		
+
+	public static void mostrarListaDirector() {
+		try {
+			// obrim fitxer per a lectura
+			FileInputStream file = new FileInputStream("src/com/proyecto/listasPeliculas/actores.llista");
+			ObjectInputStream reader = new ObjectInputStream(file);
+			try {
+				// llegim l'objecte que hi ha al fitxer (1 sol array List)
+				DirectorGeneral = (ArrayList<Director>) reader.readObject();
+				System.out.println("La lista general de pelicules es");
+				for (Director director : DirectorGeneral) {
+					System.out.println(director.toString());
+					System.out.println();
+				}
+			} catch (Exception ex) {
+				System.err.println("Se ha mostrado correctamente");
+			}
+
+			reader.close();
+			file.close();
+		} catch (Exception ex) {
+			System.err.println("Error en llegir directores.llista " + ex);
+		}
 
 	}
 	
