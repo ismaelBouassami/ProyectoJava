@@ -1,6 +1,8 @@
 package com.proyecto.clases;
 
-public class Actor {
+import java.io.Serializable;
+
+public class Actor implements Serializable{
 
 	/// ATRIBUTOS ACTORES ///
 	private static int countIdActor = 0;
