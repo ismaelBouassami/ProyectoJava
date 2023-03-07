@@ -2,12 +2,16 @@ package com.proyecto.utils;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.proyecto.clases.Pelicula;
 import com.proyecto.users.Cliente;
 import com.proyecto.users.User;
 import com.proyecto.users.User.Rol;
@@ -228,7 +232,34 @@ public class Funciones {
 			e.printStackTrace();
 			return false;
 		}
+		
 
+	}
+	//MOSTRAR LISTAS
+	
+	public static void mostrarListaPelicula() {
+		ArrayList<Pelicula> PelisGeneral = new ArrayList<Pelicula>();
+		
+		try {
+			// obrim fitxer per a lectura
+			FileInputStream file = new FileInputStream("../src/com/proyecto/listasPeliculas/peliculas.llista");
+			ObjectInputStream reader = new ObjectInputStream(file);
+			try {
+				//llegim l'objecte que hi ha al fitxer (1 sol array List)
+				PelisGeneral = (ArrayList<Pelicula>) reader.readObject();
+				System.out.println("La lista general de pelicules es");
+				for (Pelicula peli : PelisGeneral) {
+					  System.out.println(peli.toString());
+					}
+			} catch (Exception ex) {
+				System.err.println("Se ha mostrado correctamente");
+			}
+
+			reader.close();
+			file.close();
+		} catch (Exception ex) {
+			System.err.println("Error en llegir usuaris.dades " + ex);
+		}
 	}
 	// ELIMINAR USUARIO //
 

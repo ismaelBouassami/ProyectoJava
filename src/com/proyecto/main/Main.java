@@ -1,5 +1,8 @@
 package com.proyecto.main;
 
+import java.util.ArrayList;
+
+
 import com.proyecto.utils.ControlErrores;
 import com.proyecto.utils.Funciones;
 
@@ -28,6 +31,7 @@ public class Main {
 								"\n-> 1. Ver lista general \n-> 2. Ver lista personal \n-> 3. Añadir nuevo elemento a lista general \n-> 4. Añadir nuevo elemento a lista personal \n-> 5. Salir");
 						menuSecundario = ControlErrores.validarSecundario();
 						switch (menuSecundario) {
+						 
 						case 1:
 							System.out.println("-----Ver lista GENERAL-----");
 
@@ -38,6 +42,7 @@ public class Main {
 								switch (menuTerciario) {
 								case 1:
 									System.out.println("-----Ver Peliculas (Lista GENERAL)-----");
+//									Funciones.mostrarLista();
 									break;
 								case 2:
 									System.out.println("-----Ver Actores (Lista GENERAL)-----");
