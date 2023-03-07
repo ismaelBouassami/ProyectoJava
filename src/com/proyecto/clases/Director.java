@@ -32,8 +32,18 @@ public class Director implements Serializable{
 //		this.idDirector = idDirector;
 //	}
 
+	
+	
 	public String getNombreDirector() {
 		return nombreDirector;
+	}
+
+	public static int getCountIdDirector() {
+		return countIdDirector;
+	}
+
+	public static void setCountIdDirector(int countIdDirector) {
+		Director.countIdDirector = countIdDirector;
 	}
 
 	public void setNombreDirector(String nombreDirector) {

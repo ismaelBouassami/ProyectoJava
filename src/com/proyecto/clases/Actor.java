@@ -32,8 +32,18 @@ public class Actor implements Serializable{
 //		this.idActor = idActor;
 //	}
 
+	
+	
 	public String getNombreActor() {
 		return nombreActor;
+	}
+
+	public static int getCountIdActor() {
+		return countIdActor;
+	}
+
+	public static void setCountIdActor(int countIdActor) {
+		Actor.countIdActor = countIdActor;
 	}
 
 	public void setNombreActor(String nombreActor) {

@@ -122,6 +122,7 @@ public class Funciones {
 		}
 		return nomUser;
 	}
+	/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// CREAR ARCHIVO ID
 	public static void retornarId(int numero, String rutaArchivo) throws IOException {
@@ -167,7 +168,8 @@ public class Funciones {
 		scanner.close();
 		return ultimo;
 	}
-
+	/////////////////////////////////////////////////////////////////////////////////////////////////////
+	
 	// GUARDAR USUARIOS EN FICHERO TXT
 	public static void guardarUsuario(String nomUser, int ID, String nombre, String apellidos, String email,
 			String contraseña, String poblacion, Rol rol, String fecha) {
@@ -196,6 +198,7 @@ public class Funciones {
 			System.out.println("Error: " + e);
 		}
 	}
+	/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// LOGIN USUARIO //
 	public static boolean validaUsuario() {
@@ -242,60 +245,66 @@ public class Funciones {
 		}
 	}
 
-	
-	// PEDIR DATOS PELICULA
-		public static void registrarListaPelicula() {
-			System.out.println("Introduce el nombre de la pelcula:");
-			String pelicula = ControlErrores.validarString();
+	/////////////////////////////////////////////////////////////////////////////////////////////////////
 
-			System.out.println("Introduce la duración:");
-			int duracio = ControlErrores.validarInt();
+	// PEDIR DATOS LISTA PELICULA GENERAL
+	public static void pedirListaGeneralPelicula() {
+		System.out.println("Introduce el nombre de la pelcula:");
+		String pelicula = ControlErrores.validarString();
 
-			System.out.println("Introduce la fecha de emision:");
-			String fechaEmisio = ControlErrores.validarString();
+		System.out.println("Introduce la duración:");
+		int duracio = ControlErrores.validarInt();
 
-			System.out.println("Introduce el genero");
-			String genero = ControlErrores.validarString();
-			guardarListaGeneralPelicula(pelicula, duracio, fechaEmisio, genero);
-			System.out.println("Se ha guardado correctamente");
-		}
+		System.out.println("Introduce la fecha de emision:");
+		String fechaEmisio = ControlErrores.validarString();
 
-		public static void guardarListaGeneralPelicula(String pelicula, int duracio, String fechaEmisio, String genero) {
-		
-			Pelicula peliculasCreadas = new Pelicula(pelicula, duracio, fechaEmisio, genero);
-			PelisGeneral.add(peliculasCreadas);
+		System.out.println("Introduce el genero:");
+		String genero = ControlErrores.validarString();
 
-			// serialització
-			ObjectOutputStream oos = null;
-			FileOutputStream fout = null;
-			try {
-				// obrim el fitxer per escriure, sense afegir
-				// només tindrem un ArrayList d'objectes
-				fout = new FileOutputStream("src/com/proyecto/listasPeliculas/peliculas.llista", false);
-				oos = new ObjectOutputStream(fout);
-				// escrivim ArrayList sencer en el fitxer (1 sol objecte)
-				oos.writeObject(PelisGeneral);
-				oos.flush();
-				oos.close();
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			} finally {
-				if (oos != null) {
-					try {
-						oos.close();
-					} catch (Exception ex) {
-						ex.printStackTrace();
-					}
+		registrarListaGeneralPelicula(pelicula, duracio, fechaEmisio, genero);
+		System.out.println("Se ha guardado correctamente");
+	}
+
+	// GUARDAR DATOS PELICULA GENERAL
+	public static void registrarListaGeneralPelicula(String pelicula, int duracio, String fechaEmisio, String genero) {
+		Pelicula peliculasCreadas = new Pelicula(pelicula, duracio, fechaEmisio, genero);
+		System.out.println(PelisGeneral.size());
+		PelisGeneral.add(peliculasCreadas);
+
+		// serialització
+		ObjectOutputStream oos = null;
+		FileOutputStream fout = null;
+		try {
+			// obrim el fitxer per escriure, sense afegir
+			// només tindrem un ArrayList d'objectes
+			
+			//Guardar antes de crear el usuario la longitud del arrayList
+			Pelicula.setCountIdPelicula(PelisGeneral.size());
+
+			fout = new FileOutputStream("src/com/proyecto/listasPeliculas/peliculas.llista", false);
+			oos = new ObjectOutputStream(fout);
+			// escrivim ArrayList sencer en el fitxer (1 sol objecte)
+			oos.writeObject(PelisGeneral);
+			oos.flush();
+			oos.close();
+			
+			System.out.println(PelisGeneral.size());
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (oos != null) {
+				try {
+					oos.close();
+				} catch (Exception ex) {
+					ex.printStackTrace();
 				}
 			}
-
-		
 		}
+	}
 
-//MOSTRAR LISTAS
-
-	public static void mostrarListaPelicula() {
-		
+	// MOSTRAR LISTA GENERAL PELICULA
+	public static void mostrarListaGeneralPelicula() {
 
 		try {
 			// obrim fitxer per a lectura
@@ -321,7 +330,63 @@ public class Funciones {
 
 	}
 
-	public static void mostrarListaActores() {
+	/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	// PEDIR DATOS LISTA ACTOR GENERAL
+	public static void pedirListaGeneralActor() {
+		System.out.println("Introduce el nombre del actor:");
+		String nom = ControlErrores.validarString();
+
+		System.out.println("Introduce los apellidos del actor:");
+		String apellidos = ControlErrores.validarString();
+
+		System.out.println("Introduce la edad del actor:");
+		int edad = ControlErrores.validarInt();
+
+		System.out.println("Introduce la nacionalidad del actor:");
+		String nacionalidad = ControlErrores.validarString();
+
+		registrarListaGeneralActor(nom, edad, apellidos, nacionalidad);
+		System.out.println("Se ha guardado correctamente");
+	}
+
+	// GUARDAR DATOS LISTA ACTOR GENERAL
+	public static void registrarListaGeneralActor(String pelicula, int duracio, String fechaEmisio, String genero) {
+		Pelicula peliculasCreadas = new Pelicula(pelicula, duracio, fechaEmisio, genero);
+		System.out.println(ActorGeneral.size());
+		PelisGeneral.add(peliculasCreadas);
+
+		// serialització
+		ObjectOutputStream oos = null;
+		FileOutputStream fout = null;
+		try {
+			// obrim el fitxer per escriure, sense afegir
+			// només tindrem un ArrayList d'objectes
+			
+			//Guardar antes de crear el usuario la longitud del arrayList
+			Pelicula.setCountIdPelicula(PelisGeneral.size());
+			
+			fout = new FileOutputStream("src/com/proyecto/listasPeliculas/actores.llista", false);
+			oos = new ObjectOutputStream(fout);
+			// escrivim ArrayList sencer en el fitxer (1 sol objecte)
+			oos.writeObject(ActorGeneral);
+			oos.flush();
+			oos.close();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (oos != null) {
+				try {
+					oos.close();
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
+			}
+		}
+	}
+
+	// MOSTRAR DATOS LISTA ACTOR GENERAL
+	public static void mostrarListaGeneralActor() {
 		try {
 			// obrim fitxer per a lectura
 			FileInputStream file = new FileInputStream("src/com/proyecto/listasPeliculas/actores.llista");
@@ -343,10 +408,63 @@ public class Funciones {
 		} catch (Exception ex) {
 			System.err.println("Error en llegir actores.llista " + ex);
 		}
-
 	}
-		
+	/////////////////////////////////////////////////////////////////////////////////////////////////////
 
+	// PEDIR DATOS LISTA ACTOR GENERAL
+	public static void pedirListaGeneralDirector() {
+		System.out.println("Introduce el nombre del director:");
+		String nom = ControlErrores.validarString();
+
+		System.out.println("Introduce los apellidos del director:");
+		String apellidos = ControlErrores.validarString();
+
+		System.out.println("Introduce la edad del director:");
+		int edad = ControlErrores.validarInt();
+
+		System.out.println("Introduce los goyas del director:");
+		String goyas = ControlErrores.validarString();
+
+		registrarListaGeneralDirector(nom, edad, apellidos, goyas);
+		System.out.println("Se ha guardado correctamente");
+	}
+
+	// GUARDAR DATOS LISTA DIRECTOR GENERAL
+	public static void registrarListaGeneralDirector(String pelicula, int duracio, String fechaEmisio, String genero) {
+		Pelicula peliculasCreadas = new Pelicula(pelicula, duracio, fechaEmisio, genero);
+		System.out.println(DirectorGeneral.size());
+		PelisGeneral.add(peliculasCreadas);
+
+		// serialització
+		ObjectOutputStream oos = null;
+		FileOutputStream fout = null;
+		try {
+			// obrim el fitxer per escriure, sense afegir
+			// només tindrem un ArrayList d'objectes
+			
+			//Guardar antes de crear el usuario la longitud del arrayList
+			Pelicula.setCountIdPelicula(PelisGeneral.size());
+			
+			fout = new FileOutputStream("src/com/proyecto/listasPeliculas/directores.llista", false);
+			oos = new ObjectOutputStream(fout);
+			// escrivim ArrayList sencer en el fitxer (1 sol objecte)
+			oos.writeObject(DirectorGeneral);
+			oos.flush();
+			oos.close();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (oos != null) {
+				try {
+					oos.close();
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
+			}
+		}
+	}
+
+	// MOSTRAR DATOS LISTA DIRECTOR GENERAL
 	public static void mostrarListaDirector() {
 		try {
 			// obrim fitxer per a lectura
@@ -369,9 +487,9 @@ public class Funciones {
 		} catch (Exception ex) {
 			System.err.println("Error en llegir directores.llista " + ex);
 		}
-
 	}
-	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	// ELIMINAR USUARIO //
 
 	// ETC ETC //

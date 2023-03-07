@@ -2,7 +2,7 @@ package com.proyecto.clases;
 
 import java.io.Serializable;
 
-public class Pelicula implements Serializable{
+public class Pelicula implements Serializable {
 
 	/// ATRIBUTOS PELICULAS ///
 	private static int countIdPelicula = 0;
@@ -28,16 +28,24 @@ public class Pelicula implements Serializable{
 		return idPelicula;
 	}
 
-//	public void setIdPelicula(int idPelicula) {
-//		this.idPelicula = idPelicula;
+//	public static void setIdPelicula(int idPelicula) {
+//		 Pelicula.idPelicula = idPelicula;
 //	}
+
+	public void setNombrePelicula(String nombrePelicula) {
+		this.nombrePelicula = nombrePelicula;
+	}
 
 	public String getNombrePelicula() {
 		return nombrePelicula;
 	}
 
-	public void setNombrePelicula(String nombrePelicula) {
-		this.nombrePelicula = nombrePelicula;
+	public static int getCountIdPelicula() {
+		return countIdPelicula;
+	}
+
+	public static void setCountIdPelicula(int countIdPelicula) {
+		Pelicula.countIdPelicula = countIdPelicula;
 	}
 
 	public int getDuracion() {
@@ -66,7 +74,7 @@ public class Pelicula implements Serializable{
 
 	@Override
 	public String toString() {
-		return   idPelicula + ".- " + nombrePelicula ;
+		return idPelicula + ".- " + nombrePelicula;
 	}
 
 }
