@@ -32,7 +32,9 @@ public class Funciones {
 	public static ArrayList<Pelicula> PelisGeneral = new ArrayList<Pelicula>();
 	public static ArrayList<Director> DirectorGeneral = new ArrayList<Director>();
 	public static ArrayList<Actor> ActorGeneral = new ArrayList<Actor>();
-
+	public static ArrayList<Pelicula> PelisPerspnal = new ArrayList<Pelicula>();
+	public static ArrayList<Director> DirectorPersonal = new ArrayList<Director>();
+	public static ArrayList<Actor> ActorPersonal = new ArrayList<Actor>();
 	// REGISTRO USUARIO //
 	public static void registrarUsuario() {
 		System.out.println("Introduce tu nombre:");
@@ -464,30 +466,129 @@ public class Funciones {
 		}
 	}
 
-	// MOSTRAR DATOS LISTA DIRECTOR GENERAL
-	public static void mostrarListaDirector() {
-		try {
-			// obrim fitxer per a lectura
-			FileInputStream file = new FileInputStream("src/com/proyecto/listasPeliculas/actores.llista");
-			ObjectInputStream reader = new ObjectInputStream(file);
+	//MOSTRAR LISTAS
+
+		public static void mostrarListaPelicula() {
+			File vacio= new File("src/com/proyecto/listasPeliculas/peliculas.llista");
+			if (vacio.length()<0|| vacio.length()==0) {
+				System.out.println("No hay nada que mostrar");
+			}else {
+
 			try {
-				// llegim l'objecte que hi ha al fitxer (1 sol array List)
-				DirectorGeneral = (ArrayList<Director>) reader.readObject();
-				System.out.println("La lista general de pelicules es");
-				for (Director director : DirectorGeneral) {
-					System.out.println(director.toString());
-					System.out.println();
+				// obrim fitxer per a lectura
+				FileInputStream file = new FileInputStream("src/com/proyecto/listasPeliculas/peliculas.llista");
+				ObjectInputStream reader = new ObjectInputStream(file);
+				try {
+					// llegim l'objecte que hi ha al fitxer (1 sol array List)
+					PelisGeneral = (ArrayList<Pelicula>) reader.readObject();
+					System.out.println("La lista general de pelicules es");
+					for (Pelicula peli : PelisGeneral) {
+						System.out.println(peli.toString());
+						System.out.println();
+					}
+				} catch (Exception ex) {
+					System.err.println("Se ha mostrado correctamente");
 				}
+
+				reader.close();
+				file.close();
 			} catch (Exception ex) {
-				System.err.println("Se ha mostrado correctamente");
+				System.err.println("Error en llegir peliculas.llista " + ex);
+			}}
+
+		}
+
+		public static void mostrarListaActores() {
+			File vacio= new File("src/com/proyecto/listasPeliculas/actores.llista");
+			if (vacio.length()<0|| vacio.length()==0) {
+				System.out.println("No hay nada que mostrar");
+			}else {
+			try {
+				// obrim fitxer per a lectura
+				FileInputStream file = new FileInputStream("src/com/proyecto/listasPeliculas/actores.llista");
+				ObjectInputStream reader = new ObjectInputStream(file);
+				try {
+					// llegim l'objecte que hi ha al fitxer (1 sol array List)
+					ActorGeneral = (ArrayList<Actor>) reader.readObject();
+					System.out.println("La lista general de pelicules es");
+					for (Actor actor : ActorGeneral) {
+						System.out.println(actor.toString());
+						System.out.println();
+					}
+				} catch (Exception ex) {
+					System.err.println("Se ha mostrado correctamente");
+				}
+
+				reader.close();
+				file.close();
+			} catch (Exception ex) {
+				System.err.println("Error en llegir actores.llista " + ex);
 			}
 
-			reader.close();
-			file.close();
-		} catch (Exception ex) {
-			System.err.println("Error en llegir directores.llista " + ex);
+		}}
+			
+
+		public static void mostrarListaDirector() {
+			File vacio= new File("src/com/proyecto/listasPeliculas/directores.llista");
+			if (vacio.length()<0|| vacio.length()==0) {
+				System.out.println("No hay nada que mostrar");
+			}else {
+			try {
+				// obrim fitxer per a lectura
+				FileInputStream file = new FileInputStream("src/com/proyecto/listasPeliculas/directores.llista");
+				ObjectInputStream reader = new ObjectInputStream(file);
+				try {
+					// llegim l'objecte que hi ha al fitxer (1 sol array List)
+					DirectorGeneral = (ArrayList<Director>) reader.readObject();
+					System.out.println("La lista general de pelicules es");
+					for (Director director : DirectorGeneral) {
+						System.out.println(director.toString());
+						System.out.println();
+					}
+				} catch (Exception ex) {
+					System.err.println("Se ha mostrado correctamente");
+				}
+
+				reader.close();
+				file.close();
+			} catch (Exception ex) {
+				System.err.println("Error en llegir directores.llista " + ex);
+			}
+
+		}}
+		//
+		public static void mostrarListaDirectorPersonal() {
+			File vacio= new File("src/com/proyecto/usuariosCarpetas/"+nomUser+"director.llista");
+//			System.out.println(vacio.length());
+			if (vacio.length()<0|| vacio.length()==0) {
+				System.out.println("No hay nada que mostrar");
+			}else {
+				
+			
+			try {
+				// obrim fitxer per a lectura
+				FileInputStream file = new FileInputStream("src/com/proyecto/usuariosCarpetas/"+nomUser+"director.llista");
+				ObjectInputStream reader = new ObjectInputStream(file);
+				try {
+					// llegim l'objecte que hi ha al fitxer (1 sol array List)
+					DirectorPersonal = (ArrayList<Director>) reader.readObject();
+					System.out.println("La lista general de pelicules es");
+					for (Director direc : DirectorPersonal) {
+						System.out.println(direc.toString());
+						System.out.println();
+					}
+				} catch (Exception ex) {
+					System.err.println("Se ha mostrado correctamente");
+				}
+
+				reader.close();
+				file.close();
+			} catch (Exception ex) {
+				System.err.println("Error en llegir peliculas.llista " + ex);
+			}
+
+			}
 		}
-	}
 	/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// ELIMINAR USUARIO //
