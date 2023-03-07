@@ -164,6 +164,7 @@ public class ControlErrores {
 		return email;
 	}
 
+	
 	// VALIDAR UN FILE //
 
 	// VALIDAR UN USUARI //
