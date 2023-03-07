@@ -11,6 +11,8 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.proyecto.clases.Actor;
+import com.proyecto.clases.Director;
 import com.proyecto.clases.Pelicula;
 import com.proyecto.users.Cliente;
 import com.proyecto.users.User;
@@ -70,7 +72,7 @@ public class Funciones {
 		// información de los usuarios
 		Cliente N1 = new Cliente(finalId, usuario, apellidos, contraseña, email, poblacion, User.Rol.USUARIO, fecha,
 				null, null, null);
-		
+
 		// Mostramos los datos del cliente y su numro de usuario
 		System.out.println("\n" + N1.toString());
 		System.out.println("Tu nombre de usuario es: " + nomUser);
@@ -216,7 +218,7 @@ public class Funciones {
 					trobat = true;
 					if (dades[5].equals(pwd)) {
 						System.out.println("Login satisfactorio para el usuario " + usr);
-						//missatge benvinguda, nom apellido
+						// missatge benvinguda, nom apellido
 						login = true;
 					} else {
 						trobat = true;
@@ -234,25 +236,24 @@ public class Funciones {
 			e.printStackTrace();
 			return false;
 		}
-		
 
 	}
-	//MOSTRAR LISTAS
-	
+	// MOSTRAR LISTAS
+
 	public static void mostrarListaPelicula() {
 		ArrayList<Pelicula> PelisGeneral = new ArrayList<Pelicula>();
-		
+
 		try {
 			// obrim fitxer per a lectura
-			FileInputStream file = new FileInputStream("../src/com/proyecto/listasPeliculas/peliculas.llista");
+			FileInputStream file = new FileInputStream("src/com/proyecto/listasPeliculas/peliculas.llista");
 			ObjectInputStream reader = new ObjectInputStream(file);
 			try {
-				//llegim l'objecte que hi ha al fitxer (1 sol array List)
+				// llegim l'objecte que hi ha al fitxer (1 sol array List)
 				PelisGeneral = (ArrayList<Pelicula>) reader.readObject();
 				System.out.println("La lista general de pelicules es");
 				for (Pelicula peli : PelisGeneral) {
-					  System.out.println(peli.toString());
-					}
+					System.out.println(peli.toString());
+				}
 			} catch (Exception ex) {
 				System.err.println("Se ha mostrado correctamente");
 			}
@@ -260,9 +261,20 @@ public class Funciones {
 			reader.close();
 			file.close();
 		} catch (Exception ex) {
-			System.err.println("Error en llegir usuaris.dades " + ex);
+			System.err.println("Error en llegir peliculas.llista " + ex);
 		}
+
 	}
+
+	public static void mostrarListaActores() {
+		ArrayList<Actor> ActorGenerol = new ArrayList<Actor>();
+	}
+
+	public static void mostrarListaDirector() {
+		ArrayList<Director> DirectorGeneral = new ArrayList<Director>();
+
+	}
+	//
 	// ELIMINAR USUARIO //
 
 	// ETC ETC //

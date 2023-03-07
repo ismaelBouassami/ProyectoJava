@@ -42,13 +42,15 @@ public class Main {
 								switch (menuTerciario) {
 								case 1:
 									System.out.println("-----Ver Peliculas (Lista GENERAL)-----");
-//									Funciones.mostrarLista();
+									Funciones.mostrarListaPelicula();
 									break;
 								case 2:
 									System.out.println("-----Ver Actores (Lista GENERAL)-----");
+									Funciones.mostrarListaActores();
 									break;
 								case 3:
 									System.out.println("-----Ver Directores (Lista GENERAL)-----");
+									Funciones.mostrarListaDirector();
 									break;
 								default:
 									System.out.println("Salir");

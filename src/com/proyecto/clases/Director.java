@@ -64,8 +64,8 @@ public class Director {
 
 	@Override
 	public String toString() {
-		return "Id Director: " + idDirector + "\nNombre: " + nombreDirector + "\nApellido: " + apellidoDirector
-				+ "\nEdad: " + edadDirector + "\nGoyas: " + goyas;
+		return "Nombre: " + nombreDirector + "Apellido: " + apellidoDirector
+				+ "Edad: " + edadDirector + "Goyas: " + goyas;
 	}
 
 }
