@@ -1,8 +1,6 @@
 package com.proyecto.clases;
 
-import java.io.Serializable;
-
-public class Actor implements Serializable{
+public class Actor {
 
 	/// ATRIBUTOS ACTORES ///
 	private static int countIdActor = 0;
@@ -32,18 +30,8 @@ public class Actor implements Serializable{
 //		this.idActor = idActor;
 //	}
 
-	
-	
 	public String getNombreActor() {
 		return nombreActor;
-	}
-
-	public static int getCountIdActor() {
-		return countIdActor;
-	}
-
-	public static void setCountIdActor(int countIdActor) {
-		Actor.countIdActor = countIdActor;
 	}
 
 	public void setNombreActor(String nombreActor) {
@@ -76,7 +64,8 @@ public class Actor implements Serializable{
 
 	@Override
 	public String toString() {
-		return  idActor + ".- " + nombreActor ;
+		return "Id Actor: " + idActor + "\nNombre: " + nombreActor + "\nApellidos: " + apellidoActor + "\nEdad: "
+				+ edadActor + "\nNacionalidad: " + nacionalidadActor;
 	}
 
 }
