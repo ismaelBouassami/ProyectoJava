@@ -6,7 +6,7 @@ public class Pelicula implements Serializable {
 
 	/// ATRIBUTOS PELICULAS ///
 	private static int countIdPelicula = 0;
-	private int idPelicula;
+	private   int idPelicula;
 	private String nombrePelicula;
 	private int duracion;
 	private String anioEmision;
@@ -24,7 +24,7 @@ public class Pelicula implements Serializable {
 	}
 
 	/// GETTERS Y SETTERS ///
-	public int getIdPelicula() {
+	public  int getIdPelicula() {
 		return idPelicula;
 	}
 

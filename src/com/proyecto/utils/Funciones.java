@@ -29,13 +29,13 @@ public class Funciones {
 
 	// Varible nombre usuario
 	public static String nomUser = "";
-	
-	//Listas generales
+
+	// Listas generales
 	public static ArrayList<Pelicula> PelisGeneral = new ArrayList<Pelicula>();
 	public static ArrayList<Director> DirectorGeneral = new ArrayList<Director>();
 	public static ArrayList<Actor> ActorGeneral = new ArrayList<Actor>();
 
-	//Listas personales
+	// Listas personales
 	public static ArrayList<Pelicula> PelisPersonal = new ArrayList<Pelicula>();
 	public static ArrayList<Director> DirectorPersonal = new ArrayList<Director>();
 	public static ArrayList<Actor> ActorPersonal = new ArrayList<Actor>();
@@ -271,6 +271,7 @@ public class Funciones {
 
 	// GUARDAR DATOS PELICULA GENERAL
 	public static void registrarListaGeneralPelicula(String pelicula, int duracio, String fechaEmisio, String genero) {
+		Pelicula.setCountIdPelicula(PelisGeneral.size());
 		Pelicula peliculasCreadas = new Pelicula(pelicula, duracio, fechaEmisio, genero);
 		System.out.println(PelisGeneral.size());
 		PelisGeneral.add(peliculasCreadas);
@@ -283,7 +284,8 @@ public class Funciones {
 			// només tindrem un ArrayList d'objectes
 
 			// Guardar antes de crear el usuario la longitud del arrayList
-			Pelicula.setCountIdPelicula(PelisGeneral.size());
+//			Pelicula.setCountIdPelicula(PelisGeneral.size
+			System.out.println("Va a guardar con variable: " + PelisGeneral.size());
 
 			fout = new FileOutputStream("src/com/proyecto/listasPeliculas/peliculas.llista", false);
 			oos = new ObjectOutputStream(fout);
@@ -514,45 +516,147 @@ public class Funciones {
 
 	// PEDIR DATO A GUARDAR LISTA PELICULA PERSONAL
 	public static void pedirListaPersonalPelicula() {
-		//code...
+
+		System.out.println("Introduce el numero de la pelicula que quieres coger:");
+		for (Pelicula i : PelisGeneral) {
+			System.out.println(i.toString());
+		}
+		int numPeliACopiar = ControlErrores.validarInt();
+
+		if (numPeliACopiar > PelisGeneral.size()) {
+			System.out.println("El numero que has puesto no esta en la lista");
+		} else {
+
+			Pelicula personal = PelisGeneral.get(numPeliACopiar - 1);
+
+			PelisPersonal.add(personal);
+			registrarListaPersonalPelicula();
+
+		}
+
 	}
-	
+
 	// GUARDAR DATOS PELICULA LISTA PERSONAL
 	public static void registrarListaPersonalPelicula() {
-		//code...
+		// serialització
+		ObjectOutputStream oos = null;
+		FileOutputStream fout = null;
+		try {
+			// obrim el fitxer per escriure, sense afegir
+			// només tindrem un ArrayList d'objectes
+
+			// Guardar antes de crear el usuario la longitud del arrayList
+			Pelicula.setCountIdPelicula(PelisPersonal.size());
+
+			fout = new FileOutputStream("src/com/proyecto/usuariosCarpetas/" + nomUser + "pelicula.llista", false);
+			oos = new ObjectOutputStream(fout);
+			// escrivim ArrayList sencer en el fitxer (1 sol objecte)
+			oos.writeObject(PelisPersonal);
+			oos.flush();
+			oos.close();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (oos != null) {
+				try {
+					oos.close();
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
+			}
+		}
 	}
-	
+
 	// PEDIR DATO A GUARDAR LISTA ACTOR PERSONAL
 	public static void pedirListaPersonalActor() {
-		//code...
+		// code...
 	}
-	
+
 	// GUARDAR DATOS ACTOR LISTA PERSONAL
 	public static void registrarListaPersonalActor() {
-		//code...
+		// code...
 	}
 
 	// PEDIR DATO A GUARDAR LISTA DIRECTOR PERSONAL
 	public static void pedirListaPersonalDirector() {
-		//code...
+		// code...
 	}
-	
+
 	// GUARDAR DATOS DIRECTOR LISTA PERSONAL
 	public static void registrarListaPersonalDirector() {
-		//code...
+		// code...
 	}
-	
+
 	// MOSTRAR LISTAS PERSONALES
 	// ---------------------------------------------------------------------------------------------------------------
 
 	// MOSTRAR LISTA PERSONAL PELICULA
 	public static void mostrarListaPelicuPersonal() {
 		// code...
+		File vacio = new File("src/com/proyecto/usuariosCarpetas/" + nomUser + "pelicula.llista");
+//		System.out.println(vacio.length());
+		if (vacio.length() < 0 || vacio.length() == 0) {
+			System.out.println("No hay nada que mostrar");
+		} else {
+
+			try {
+				// obrim fitxer per a lectura
+				FileInputStream file = new FileInputStream(
+						"src/com/proyecto/usuariosCarpetas/" + nomUser + "pelicula.llista");
+				ObjectInputStream reader = new ObjectInputStream(file);
+				try {
+					// llegim l'objecte que hi ha al fitxer (1 sol array List)
+					PelisPersonal = (ArrayList<Pelicula>) reader.readObject();
+					System.out.println("La lista general de pelicules es");
+					for (Pelicula direc : PelisPersonal) {
+						System.out.println(direc.toString());
+						System.out.println();
+					}
+				} catch (Exception ex) {
+					System.err.println("Se ha mostrado correctamente");
+				}
+
+				reader.close();
+				file.close();
+			} catch (Exception ex) {
+				System.err.println("Error en llegir peliculas.llista " + ex);
+			}
+
+		}
 	}
 
 	// MOSTRAR LISTA PERSONAL ACTOR
 	public static void mostrarListaActorPersonal() {
-		// code...
+		File vacio = new File("src/com/proyecto/usuariosCarpetas/" + nomUser + "actor.llista");
+//		System.out.println(vacio.length());
+		if (vacio.length() < 0 || vacio.length() == 0) {
+			System.out.println("No hay nada que mostrar");
+		} else {
+
+			try {
+				// obrim fitxer per a lectura
+				FileInputStream file = new FileInputStream(
+						"src/com/proyecto/usuariosCarpetas/" + nomUser + "actor.llista");
+				ObjectInputStream reader = new ObjectInputStream(file);
+				try {
+					// llegim l'objecte que hi ha al fitxer (1 sol array List)
+					ActorPersonal = (ArrayList<Actor>) reader.readObject();
+					System.out.println("La lista general de pelicules es");
+					for (Actor act : ActorPersonal) {
+						System.out.println(act.toString());
+						System.out.println();
+					}
+				} catch (Exception ex) {
+					System.err.println("Se ha mostrado correctamente");
+				}
+
+				reader.close();
+				file.close();
+			} catch (Exception ex) {
+				System.err.println("Error en llegir actor.llista " + ex);
+			}
+
+		}
 	}
 
 	// MOSTRAR LISTA PERSONAL DIRECTOR
@@ -583,12 +687,120 @@ public class Funciones {
 				reader.close();
 				file.close();
 			} catch (Exception ex) {
-				System.err.println("Error en llegir peliculas.llista " + ex);
+				System.err.println("Error en llegir director.llista " + ex);
 			}
 
 		}
 	} // ---------------------------------------------------------------------------------------------------------------
 
+	// Cargar los arrayList al principio del programa
+	public static void cargarArrayslist() {
+		// cargar listageneralPelis
+		try {
+			// obrim fitxer per a lectura
+			FileInputStream file = new FileInputStream("src/com/proyecto/listasPeliculas/peliculas.llista");
+			ObjectInputStream reader = new ObjectInputStream(file);
+			try {
+				// llegim l'objecte que hi ha al fitxer (1 sol array List)
+				PelisGeneral = (ArrayList<Pelicula>) reader.readObject();
+//				
+			} catch (Exception ex) {
+				System.err.println("Se ha mostrado correctamente");
+			}
+
+			reader.close();
+			file.close();
+		} catch (Exception ex) {
+			// System.err.println("Error en llegir peliculas.llista " + ex);
+		}
+		// cargar listageneralActor
+		try {
+			// obrim fitxer per a lectura
+			FileInputStream file = new FileInputStream("src/com/proyecto/listasPeliculas/actores.llista");
+			ObjectInputStream reader = new ObjectInputStream(file);
+			try {
+				// llegim l'objecte que hi ha al fitxer (1 sol array List)
+				ActorGeneral = (ArrayList<Actor>) reader.readObject();
+
+			} catch (Exception ex) {
+//				System.err.println("Se ha mostrado correctamente");
+			}
+
+			reader.close();
+			file.close();
+		} catch (Exception ex) {
+//			System.err.println("Error en llegir actores.llista " + ex);
+		}
+		// cargar listagenralDirector
+		try {
+			// obrim fitxer per a lectura
+			FileInputStream file = new FileInputStream("src/com/proyecto/listasPeliculas/directores.llista");
+			ObjectInputStream reader = new ObjectInputStream(file);
+			try {
+
+			} catch (Exception ex) {
+//				System.err.println("Se ha mostrado correctamente");
+			}
+
+			reader.close();
+			file.close();
+		} catch (Exception ex) {
+//			System.err.println("Error en llegir directores.llista " + ex);
+		}
+		// cargarlistaspersonales
+		try {
+			// obrim fitxer per a lectura
+			FileInputStream file = new FileInputStream(
+					"src/com/proyecto/usuariosCarpetas/" + nomUser + "director.llista");
+			ObjectInputStream reader = new ObjectInputStream(file);
+			try {
+
+			} catch (Exception ex) {
+//				System.err.println("Se ha mostrado correctamente");
+			}
+
+			reader.close();
+			file.close();
+		} catch (Exception ex) {
+//			System.err.println("Error en llegir director.llista " + ex);
+		}
+		
+		//
+		try {
+			// obrim fitxer per a lectura
+			FileInputStream file = new FileInputStream(
+					"src/com/proyecto/usuariosCarpetas/" + nomUser + "pelicula.llista");
+			ObjectInputStream reader = new ObjectInputStream(file);
+			try {
+			
+			} catch (Exception ex) {
+//				System.err.println("Se ha mostrado correctamente");
+			}
+
+			reader.close();
+			file.close();
+		} catch (Exception ex) {
+//			System.err.println("Error en llegir peliculas.llista " + ex);
+		}
+
+		//
+		try {
+			// obrim fitxer per a lectura
+			FileInputStream file = new FileInputStream(
+					"src/com/proyecto/usuariosCarpetas/" + nomUser + "actor.llista");
+			ObjectInputStream reader = new ObjectInputStream(file);
+			try {
+				
+			} catch (Exception ex) {
+//				System.err.println("Se ha mostrado correctamente");
+			}
+
+			reader.close();
+			file.close();
+		} catch (Exception ex) {
+//			System.err.println("Error en llesgir actor.llista " + ex);
+		}
+	}
 	// ELIMINAR USUARIO //
 
 	// ETC ETC //
