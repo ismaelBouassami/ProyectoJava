@@ -1,4 +1,3 @@
 USUARIO          |ID | Nombre           | Apellidos        | Email                        | Contraseña       | Población   | Rol        | Fecha        
 -----------------+---+------------------+------------------+------------------------------+------------------+-------------+------------+--------------
-1josejose        |001|joseluis          |juan              |josejose@gg.com               |canals            |canals       |USUARIO     |nopreguntes   
-2isma            |003|isma              |isma              |isma@isma.com                 |xativa            |xativa       |USUARIO     |22            
+admin            |000|admin             |                  |admin@admin.com               |admin           	 |inexistente  |admin       |   

@@ -14,7 +14,7 @@ public class Main {
 			System.out.println("\n-> 1. Registrar Usuario \n-> 2. Login \n-> 3. Salir");
 			menuPrincipal = ControlErrores.validarMenuPrincipal();
 			switch (menuPrincipal) {
-			case 1:
+			case 1: 
 				///// AQUI IRA LA FUNCION DE registrarUser() ///////////
 				System.out.println("-----Registrar Usuario-----");
 				Funciones.registrarUsuario();
