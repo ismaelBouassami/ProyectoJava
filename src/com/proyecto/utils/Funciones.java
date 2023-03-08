@@ -390,7 +390,7 @@ public class Funciones {
 
 		registrarListaGeneralDirector(nom, edad, apellidos, goyas);
 		System.out.println("Se ha guardado correctamente");
-	}
+	} 
 
 	// GUARDAR DATOS LISTA DIRECTOR GENERAL
 	public static void registrarListaGeneralDirector(String pelicula, int duracio, String fechaEmisio, String genero) {

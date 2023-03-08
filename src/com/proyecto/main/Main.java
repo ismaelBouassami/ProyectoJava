@@ -14,7 +14,7 @@ public class Main {
 			System.out.println("\n-> 1. Registrar Usuario \n-> 2. Login \n-> 3. Salir");
 			menuPrincipal = ControlErrores.validarMenuPrincipal();
 			switch (menuPrincipal) {
-			case 1: 
+			case 1:
 				///// AQUI IRA LA FUNCION DE registrarUser() ///////////
 				System.out.println("-----Registrar Usuario-----");
 				Funciones.registrarUsuario();
@@ -24,7 +24,6 @@ public class Main {
 				System.out.println("-----Iniciar Sesion-----");
 				if(Funciones.validaUsuario()) {
 					do {
-						Funciones.cargarArrayslist();
 						System.out.println(
 								"\n-> 1. Ver lista general \n-> 2. Ver lista personal \n-> 3. Añadir nuevo elemento a lista general \n-> 4. Añadir nuevo elemento a lista personal \n-> 5. Salir");
 						menuSecundario = ControlErrores.validarSecundario();
@@ -40,17 +39,14 @@ public class Main {
 								switch (menuTerciario) {
 								case 1:
 									System.out.println("-----Ver Peliculas (Lista GENERAL)-----");
-									Funciones.mostrarListaGeneralPelicula();
+									Funciones.mostrarListaPelicula();
 									break;
 								case 2:
 									System.out.println("-----Ver Actores (Lista GENERAL)-----");
-									Funciones.mostrarListaGeneralActor();
 									break;
 								case 3:
 									System.out.println("-----Ver Directores (Lista GENERAL)-----");
-									Funciones.mostrarListaGeneralDirector();
 									break;
-									
 								default:
 									System.out.println("Salir");
 								}
@@ -68,15 +64,12 @@ public class Main {
 								switch (menuTerciario) {
 								case 1:
 									System.out.println("-----Ver Peliculas (Lista PERSONAL)-----");
-									Funciones.mostrarListaPelicuPersonal();
 									break;
 								case 2:
 									System.out.println("-----Ver Actores (Lista PERSONAL)-----");
-									Funciones.mostrarListaActorPersonal();
 									break;
 								case 3:
 									System.out.println("-----Ver Directores (Lista PERSONAL)-----");
-									Funciones.mostrarListaDirectorPersonal();
 									break;
 								default:
 									System.out.println("Salir");
@@ -94,15 +87,13 @@ public class Main {
 								switch (menuTerciario) {
 								case 1:
 									System.out.println("-----Añádir Peliculas (Lista GENERAL)-----");
-									Funciones.pedirListaGeneralPelicula();
+									Funciones.registrarListaPelicula();
 									break;
 								case 2:
 									System.out.println("-----Añádir Actores (Lista GENERAL)-----");
-									Funciones.pedirListaGeneralActor();
 									break;
 								case 3:
 									System.out.println("-----Añádir Directores (Lista GENERAL)-----");
-									Funciones.pedirListaGeneralDirector();
 									break;
 								default:
 									System.out.println("Salir");
@@ -120,15 +111,12 @@ public class Main {
 								switch (menuTerciario) {
 								case 1:
 									System.out.println("-----Añádir Peliculas (Lista PERSONAL)-----");
-									Funciones.pedirListaPersonalPelicula();
 									break;
 								case 2:
 									System.out.println("-----Añádir Actores (Lista PERSONAL)-----");
-									Funciones.pedirListaPersonalActor();
 									break;
 								case 3:
 									System.out.println("-----Añádir Directores (Lista PERSONAL)-----");
-									Funciones.pedirListaPersonalDirector();
 									break;
 								default:
 									System.out.println("Salir");
