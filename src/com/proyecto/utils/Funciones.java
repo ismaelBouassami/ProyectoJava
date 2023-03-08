@@ -23,7 +23,6 @@ import com.proyecto.users.User.Rol;
 
 public class Funciones {
 	static Scanner leer = new Scanner(System.in);
-	SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
 
 	// Fuera del metodo para no reinicializar
 	public static int conId = 1;
