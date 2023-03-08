@@ -28,7 +28,30 @@ public class Funciones {
 	public static int finalId = 1;
 
 	// Varible nombre usuario
-	public static String nomUser = "";
+	public static  String nomUser="" ;
+	public static String userCarpeta="";
+	
+	
+	
+	
+
+
+
+	public static String getNomUser() {
+		return nomUser;
+	}
+
+	public static String setNomUser(String nomUser) {
+		return Funciones.nomUser = nomUser;
+	}
+
+	public static String getUserCarpeta() {
+		return userCarpeta;
+	}
+
+	public static void setUserCarpeta(String userCarpeta) {
+		Funciones.userCarpeta = userCarpeta;
+	}
 
 	// Listas generales
 	public static ArrayList<Pelicula> PelisGeneral = new ArrayList<Pelicula>();
@@ -92,14 +115,19 @@ public class Funciones {
 		guardarUsuario(nomUser, finalId, usuario, apellidos, email, contraseña, poblacion, User.Rol.USUARIO, fecha);
 		// Pasamos el parametro usuario para crear carpeta
 		crearCarpeta(nomUser);
-
+		
+		setUserCarpeta(nomUser);
 	}
-
+	
+	public static String devolverNombreUSer(String nom) {
+		
+		return nom;
+	}
 	// OBTENER NOMBRE USUARIO //
 	public static String obtenerNomUser(int id, String email) {
 		int posFinal = email.lastIndexOf("@");
 		email = email.substring(0, posFinal);
-		return nomUser = "" + id + email;
+		return setNomUser(nomUser = "" + id + email);
 	}
 
 	// CREAR CARPETA USUARIO Y LISTAS //
@@ -528,7 +556,8 @@ public class Funciones {
 		} else {
 
 			Pelicula personal = PelisGeneral.get(numPeliACopiar - 1);
-			personal.setCountIdPelicula(PelisPersonal.size());
+			Pelicula.setCountIdPelicula(PelisPersonal.size()+1);
+			System.out.println("pelispersonal id ="+PelisPersonal.size());
 			PelisPersonal.add(personal);
 			registrarListaPersonalPelicula();
 
@@ -547,8 +576,8 @@ public class Funciones {
 
 			// Guardar antes de crear el usuario la longitud del arrayList
 			Pelicula.setCountIdPelicula(PelisPersonal.size());
-
-			fout = new FileOutputStream("src/com/proyecto/usuariosCarpetas/" + nomUser + "pelicula.llista", false);
+			System.out.println("-"+getNomUser()+"-"+nomUser+"-"+userCarpeta+"-"+getUserCarpeta());
+			fout = new FileOutputStream("src/com/proyecto/usuariosCarpetas/" + nomUser + "/pelicula.llista", false);
 			oos = new ObjectOutputStream(fout);
 			// escrivim ArrayList sencer en el fitxer (1 sol objecte)
 			oos.writeObject(PelisPersonal);
@@ -593,7 +622,7 @@ public class Funciones {
 	// MOSTRAR LISTA PERSONAL PELICULA
 	public static void mostrarListaPelicuPersonal() {
 		// code...
-		File vacio = new File("src/com/proyecto/usuariosCarpetas/" + nomUser + "pelicula.llista");
+		File vacio = new File("src/com/proyecto/usuariosCarpetas/" + nomUser + "/pelicula.llista");
 //		System.out.println(vacio.length());
 		if (vacio.length() < 0 || vacio.length() == 0) {
 			System.out.println("No hay nada que mostrar");
@@ -602,7 +631,7 @@ public class Funciones {
 			try {
 				// obrim fitxer per a lectura
 				FileInputStream file = new FileInputStream(
-						"src/com/proyecto/usuariosCarpetas/" + nomUser + "pelicula.llista");
+						"src/com/proyecto/usuariosCarpetas/" + nomUser + "/pelicula.llista");
 				ObjectInputStream reader = new ObjectInputStream(file);
 				try {
 					// llegim l'objecte que hi ha al fitxer (1 sol array List)
@@ -661,7 +690,7 @@ public class Funciones {
 
 	// MOSTRAR LISTA PERSONAL DIRECTOR
 	public static void mostrarListaDirectorPersonal() {
-		File vacio = new File("src/com/proyecto/usuariosCarpetas/" + nomUser + "director.llista");
+		File vacio = new File("src/com/proyecto/usuariosCarpetas/" + nomUser + "/director.llista");
 //			System.out.println(vacio.length());
 		if (vacio.length() < 0 || vacio.length() == 0) {
 			System.out.println("No hay nada que mostrar");
@@ -670,7 +699,7 @@ public class Funciones {
 			try {
 				// obrim fitxer per a lectura
 				FileInputStream file = new FileInputStream(
-						"src/com/proyecto/usuariosCarpetas/" + nomUser + "director.llista");
+						"src/com/proyecto/usuariosCarpetas/" + nomUser + "/director.llista");
 				ObjectInputStream reader = new ObjectInputStream(file);
 				try {
 					// llegim l'objecte que hi ha al fitxer (1 sol array List)
@@ -751,7 +780,7 @@ public class Funciones {
 		try {
 			// obrim fitxer per a lectura
 			FileInputStream file = new FileInputStream(
-					"src/com/proyecto/usuariosCarpetas/" + nomUser + "director.llista");
+					"src/com/proyecto/usuariosCarpetas/" + nomUser + "/director.llista");
 			ObjectInputStream reader = new ObjectInputStream(file);
 			try {
 
@@ -769,7 +798,7 @@ public class Funciones {
 		try {
 			// obrim fitxer per a lectura
 			FileInputStream file = new FileInputStream(
-					"src/com/proyecto/usuariosCarpetas/" + nomUser + "pelicula.llista");
+					"src/com/proyecto/usuariosCarpetas/" + nomUser + "/pelicula.llista");
 			ObjectInputStream reader = new ObjectInputStream(file);
 			try {
 			
@@ -787,7 +816,7 @@ public class Funciones {
 		try {
 			// obrim fitxer per a lectura
 			FileInputStream file = new FileInputStream(
-					"src/com/proyecto/usuariosCarpetas/" + nomUser + "actor.llista");
+					"src/com/proyecto/usuariosCarpetas/" + nomUser + "/actor.llista");
 			ObjectInputStream reader = new ObjectInputStream(file);
 			try {
 				

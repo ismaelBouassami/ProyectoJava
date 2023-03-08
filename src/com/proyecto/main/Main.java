@@ -50,6 +50,7 @@ public class Main {
 									System.out.println("-----Ver Directores (Lista GENERAL)-----");
 									Funciones.mostrarListaGeneralDirector();
 									break;
+									
 								default:
 									System.out.println("Salir");
 								}
