@@ -28,30 +28,27 @@ public class Funciones {
 	public static int finalId = 1;
 
 	// Varible nombre usuario
-	public static  String nomUser="" ;
-	public static String userCarpeta="";
+	public static String nomUser = "";
+	public static String userCarpeta = "";
+
+	//Variable para crear listas personales
+	public static String nomUserFinal;
 	
-	
-	
-	
-
-
-
-	public static String getNomUser() {
-		return nomUser;
-	}
-
-	public static String setNomUser(String nomUser) {
-		return Funciones.nomUser = nomUser;
-	}
-
-	public static String getUserCarpeta() {
-		return userCarpeta;
-	}
-
-	public static void setUserCarpeta(String userCarpeta) {
-		Funciones.userCarpeta = userCarpeta;
-	}
+//	public static String getNomUser() {
+//		return nomUser;
+//	}
+//
+//	public static String setNomUser(String nomUser) {
+//		return Funciones.nomUser = nomUser;
+//	}
+//
+//	public static String getUserCarpeta() {
+//		return userCarpeta;
+//	}
+//
+//	public static void setUserCarpeta(String userCarpeta) {
+//		Funciones.userCarpeta = userCarpeta;
+//	}
 
 	// Listas generales
 	public static ArrayList<Pelicula> PelisGeneral = new ArrayList<Pelicula>();
@@ -115,20 +112,22 @@ public class Funciones {
 		guardarUsuario(nomUser, finalId, usuario, apellidos, email, contraseña, poblacion, User.Rol.USUARIO, fecha);
 		// Pasamos el parametro usuario para crear carpeta
 		crearCarpeta(nomUser);
-		
-		setUserCarpeta(nomUser);
+
+//		setUserCarpeta(nomUser);
 	}
-	
-	public static String devolverNombreUSer(String nom) {
-		
-		return nom;
-	}
+
 	// OBTENER NOMBRE USUARIO //
 	public static String obtenerNomUser(int id, String email) {
 		int posFinal = email.lastIndexOf("@");
 		email = email.substring(0, posFinal);
-		return setNomUser(nomUser = "" + id + email);
+//		return setNomUser(nomUser = "" + id + email);
+		return nomUser = "" + id + email;
+
 	}
+
+	
+	
+	
 
 	// CREAR CARPETA USUARIO Y LISTAS //
 	public static String crearCarpeta(String nomUser) {
@@ -233,7 +232,6 @@ public class Funciones {
 
 	// LOGIN USUARIO //
 	public static boolean validaUsuario() {
-
 		try {
 			File f = new File("src/com/proyecto/utils/usersGuardados.txt");
 			FileReader fr = new FileReader(f);
@@ -241,7 +239,8 @@ public class Funciones {
 
 			System.out.println("Introduce el nombre de usuario: ");
 			String usr = ControlErrores.validarString();
-
+			devolverNombreUser(usr);
+			
 			System.out.println("Introduce la contraseña: ");
 			String pwd = ControlErrores.validarString();
 
@@ -258,6 +257,7 @@ public class Funciones {
 					if (dades[5].equals(pwd)) {
 						System.out.println("Login satisfactorio para el usuario " + usr);
 						// missatge benvinguda, nom apellido
+						System.out.println(nomUser);
 						login = true;
 					} else {
 						trobat = true;
@@ -274,6 +274,11 @@ public class Funciones {
 			e.printStackTrace();
 			return false;
 		}
+	}
+	
+	// GUARDAR EL USUARIO PARA LISTAS PERSONALES
+	public static String devolverNombreUser(String usr) {
+		return nomUserFinal=usr;
 	}
 
 	// PEDIR Y GUARDAR DATOS LISTAS GENERALES
@@ -539,7 +544,7 @@ public class Funciones {
 		}
 	}
 
-	// PEDIR Y GUARDAR DATOS LISTAS GENERALES
+	// PEDIR Y GUARDAR DATOS LISTAS PERSONALES
 	// ---------------------------------------------------------------------------------------------------------------
 
 	// PEDIR DATO A GUARDAR LISTA PELICULA PERSONAL
@@ -554,19 +559,18 @@ public class Funciones {
 		if (numPeliACopiar > PelisGeneral.size()) {
 			System.out.println("El numero que has puesto no esta en la lista");
 		} else {
-
 			Pelicula personal = PelisGeneral.get(numPeliACopiar - 1);
-			Pelicula.setCountIdPelicula(PelisPersonal.size()+1);
-			System.out.println("pelispersonal id ="+PelisPersonal.size());
+			Pelicula.setCountIdPelicula(PelisPersonal.size() + 1);
+			System.out.println("pelispersonal id =" + PelisPersonal.size());
 			PelisPersonal.add(personal);
-			registrarListaPersonalPelicula();
+			registrarListaPersonalPelicula(nomUser);
 
 		}
 
 	}
 
 	// GUARDAR DATOS PELICULA LISTA PERSONAL
-	public static void registrarListaPersonalPelicula() {
+	public static void registrarListaPersonalPelicula(String nomUser) {
 		// serialització
 		ObjectOutputStream oos = null;
 		FileOutputStream fout = null;
@@ -576,8 +580,9 @@ public class Funciones {
 
 			// Guardar antes de crear el usuario la longitud del arrayList
 			Pelicula.setCountIdPelicula(PelisPersonal.size());
-			System.out.println("-"+getNomUser()+"-"+nomUser+"-"+userCarpeta+"-"+getUserCarpeta());
-			fout = new FileOutputStream("src/com/proyecto/usuariosCarpetas/" + nomUser + "/pelicula.llista", false);
+//			System.out.println("-"+getNomUser()+"-"+nomUser+"-"+userCarpeta+"-"+getUserCarpeta());
+
+			fout = new FileOutputStream("src/com/proyecto/usuariosCarpetas/" + nomUserFinal + "/pelicula.llista", false);
 			oos = new ObjectOutputStream(fout);
 			// escrivim ArrayList sencer en el fitxer (1 sol objecte)
 			oos.writeObject(PelisPersonal);
@@ -622,7 +627,7 @@ public class Funciones {
 	// MOSTRAR LISTA PERSONAL PELICULA
 	public static void mostrarListaPelicuPersonal() {
 		// code...
-		File vacio = new File("src/com/proyecto/usuariosCarpetas/" + nomUser + "/pelicula.llista");
+		File vacio = new File("src/com/proyecto/usuariosCarpetas/" + nomUserFinal + "/pelicula.llista");
 //		System.out.println(vacio.length());
 		if (vacio.length() < 0 || vacio.length() == 0) {
 			System.out.println("No hay nada que mostrar");
@@ -631,7 +636,7 @@ public class Funciones {
 			try {
 				// obrim fitxer per a lectura
 				FileInputStream file = new FileInputStream(
-						"src/com/proyecto/usuariosCarpetas/" + nomUser + "/pelicula.llista");
+						"src/com/proyecto/usuariosCarpetas/" + nomUserFinal + "/pelicula.llista");
 				ObjectInputStream reader = new ObjectInputStream(file);
 				try {
 					// llegim l'objecte que hi ha al fitxer (1 sol array List)
@@ -656,7 +661,7 @@ public class Funciones {
 
 	// MOSTRAR LISTA PERSONAL ACTOR
 	public static void mostrarListaActorPersonal() {
-		File vacio = new File("src/com/proyecto/usuariosCarpetas/" + nomUser + "/actor.llista");
+		File vacio = new File("src/com/proyecto/usuariosCarpetas/" + nomUserFinal + "/actor.llista");
 //		System.out.println(vacio.length());
 		if (vacio.length() < 0 || vacio.length() == 0) {
 			System.out.println("No hay nada que mostrar");
@@ -665,7 +670,7 @@ public class Funciones {
 			try {
 				// obrim fitxer per a lectura
 				FileInputStream file = new FileInputStream(
-						"src/com/proyecto/usuariosCarpetas/" + nomUser + "/actor.llista");
+						"src/com/proyecto/usuariosCarpetas/" + nomUserFinal + "/actor.llista");
 				ObjectInputStream reader = new ObjectInputStream(file);
 				try {
 					// llegim l'objecte que hi ha al fitxer (1 sol array List)
@@ -690,7 +695,7 @@ public class Funciones {
 
 	// MOSTRAR LISTA PERSONAL DIRECTOR
 	public static void mostrarListaDirectorPersonal() {
-		File vacio = new File("src/com/proyecto/usuariosCarpetas/" + nomUser + "/director.llista");
+		File vacio = new File("src/com/proyecto/usuariosCarpetas/" + nomUserFinal + "/director.llista");
 //			System.out.println(vacio.length());
 		if (vacio.length() < 0 || vacio.length() == 0) {
 			System.out.println("No hay nada que mostrar");
@@ -699,7 +704,7 @@ public class Funciones {
 			try {
 				// obrim fitxer per a lectura
 				FileInputStream file = new FileInputStream(
-						"src/com/proyecto/usuariosCarpetas/" + nomUser + "/director.llista");
+						"src/com/proyecto/usuariosCarpetas/" + nomUserFinal + "/director.llista");
 				ObjectInputStream reader = new ObjectInputStream(file);
 				try {
 					// llegim l'objecte que hi ha al fitxer (1 sol array List)
@@ -793,7 +798,7 @@ public class Funciones {
 		} catch (Exception ex) {
 //			System.err.println("Error en llegir director.llista " + ex);
 		}
-		
+
 		//
 		try {
 			// obrim fitxer per a lectura
@@ -801,7 +806,7 @@ public class Funciones {
 					"src/com/proyecto/usuariosCarpetas/" + nomUser + "/pelicula.llista");
 			ObjectInputStream reader = new ObjectInputStream(file);
 			try {
-			
+
 			} catch (Exception ex) {
 //				System.err.println("Se ha mostrado correctamente");
 			}
@@ -819,7 +824,7 @@ public class Funciones {
 					"src/com/proyecto/usuariosCarpetas/" + nomUser + "/actor.llista");
 			ObjectInputStream reader = new ObjectInputStream(file);
 			try {
-				
+
 			} catch (Exception ex) {
 //				System.err.println("Se ha mostrado correctamente");
 			}
