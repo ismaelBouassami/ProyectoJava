@@ -1,3 +1,9 @@
 USUARIO          |ID | Nombre           | Apellidos        | Email                        | Contraseña       | Población   | Rol        | Fecha        
 -----------------+---+------------------+------------------+------------------------------+------------------+-------------+------------+--------------
+<<<<<<< master
 admin            |000|admin             |                  |admin@admin.com               |admin           	 |inexistente  |admin       |   
+1joseluis        |001|joseluis          |juan              |joseluis@gmail.com            |canals            |canals       |USUARIO     |30/04/2002    
+=======
+1josejose        |001|joseluis          |juan              |josejose@gg.com               |canals            |canals       |USUARIO     |nopreguntes   
+2isma            |003|isma              |isma              |isma@isma.com                 |xativa            |xativa       |USUARIO     |22            
+>>>>>>> c95ca66 mas cambios
