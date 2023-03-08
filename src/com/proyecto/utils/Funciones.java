@@ -526,7 +526,10 @@ public class Funciones {
 
 	// PEDIR DATO A GUARDAR LISTA PELICULA PERSONAL
 	public static void pedirListaPersonalPelicula() {
-
+		File vacio = new File("src/com/proyecto/listasPeliculas/peliculas.llista");
+		if (vacio.length() < 0 || vacio.length() == 0) {
+			System.out.println("No puedes añadir nada ya que la lista general esta vacia");
+		} else {
 		System.out.println("Introduce el numero de la pelicula que quieres coger:");
 		for (Pelicula i : PelisGeneral) {
 			System.out.println(i.toString());
@@ -542,7 +545,7 @@ public class Funciones {
 			PelisPersonal.add(personal);
 			registrarListaPersonalPelicula();
 
-		}
+		}}
 
 	}
 
@@ -580,22 +583,116 @@ public class Funciones {
 
 	// PEDIR DATO A GUARDAR LISTA ACTOR PERSONAL
 	public static void pedirListaPersonalActor() {
-		// code...
+		
+		File vacio = new File("src/com/proyecto/listasPeliculas/actores.llista");
+		if (vacio.length() < 0 || vacio.length() == 0) {
+			System.out.println("No puedes añadir nada ya que la lista general esta vacia");
+		} else {
+		System.out.println("Introduce el numero del Actor/a que quieres coger:");
+		for (Actor i : ActorGeneral) {
+			System.out.println(i.toString());
+		}
+		int numPeliACopiar = ControlErrores.validarInt();
+
+		if (numPeliACopiar > PelisGeneral.size()) {
+			System.out.println("El numero que has puesto no esta en la lista");
+		} else {
+			Actor personal = ActorGeneral.get(numPeliACopiar - 1);
+//			Pelicula.setCountIdPelicula(PelisPersonal.size() + 1);
+//			System.out.println("pelispersonal id =" + PelisPersonal.size());
+			ActorPersonal.add(personal);
+			registrarListaPersonalActor();
+
+		}
+		}
 	}
 
 	// GUARDAR DATOS ACTOR LISTA PERSONAL
 	public static void registrarListaPersonalActor() {
-		// code...
+		// serialització
+				ObjectOutputStream oos = null;
+				FileOutputStream fout = null;
+				try {
+					// obrim el fitxer per escriure, sense afegir
+					// només tindrem un ArrayList d'objectes
+
+					// Guardar antes de crear el usuario la longitud del arrayList
+					Actor.setCountIdActor(ActorPersonal.size());
+//					System.out.println("-"+getNomUser()+"-"+nomUser+"-"+userCarpeta+"-"+getUserCarpeta());
+
+					fout = new FileOutputStream("src/com/proyecto/usuariosCarpetas/" + nomUserFinal + "/actor.llista", false);
+					oos = new ObjectOutputStream(fout);
+					// escrivim ArrayList sencer en el fitxer (1 sol objecte)
+					oos.writeObject(ActorPersonal);
+					oos.flush();
+					oos.close();
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				} finally {
+					if (oos != null) {
+						try {
+							oos.close();
+						} catch (Exception ex) {
+							ex.printStackTrace();
+						}
+					}
+				}
 	}
 
 	// PEDIR DATO A GUARDAR LISTA DIRECTOR PERSONAL
 	public static void pedirListaPersonalDirector() {
-		// code...
+		File vacio = new File("src/com/proyecto/listasPeliculas/directores.llista");
+		if (vacio.length() < 0 || vacio.length() == 0) {
+			System.out.println("No puedes añadir nada ya que la lista general esta vacia");
+		} else {
+		System.out.println("Introduce el numero del Director/a que quieres coger:");
+		for (Director i : DirectorGeneral) {
+			System.out.println(i.toString());
+		}
+		int numPeliACopiar = ControlErrores.validarInt();
+
+		if (numPeliACopiar > DirectorGeneral.size()) {
+			System.out.println("El numero que has puesto no esta en la lista");
+		} else {
+			Director personal = DirectorGeneral.get(numPeliACopiar - 1);
+//			Pelicula.setCountIdPelicula(PelisPersonal.size() + 1);
+//			System.out.println("pelispersonal id =" + PelisPersonal.size());
+			DirectorPersonal.add(personal);
+			registrarListaPersonalDirector();
+
+		}}
 	}
 
 	// GUARDAR DATOS DIRECTOR LISTA PERSONAL
 	public static void registrarListaPersonalDirector() {
-		// code...
+		// serialització
+		ObjectOutputStream oos = null;
+		FileOutputStream fout = null;
+		try {
+			// obrim el fitxer per escriure, sense afegir
+			// només tindrem un ArrayList d'objectes
+
+			// Guardar antes de crear el usuario la longitud del arrayList
+			Director.setCountIdDirector(DirectorPersonal.size());
+//			System.out.println("-"+getNomUser()+"-"+nomUser+"-"+userCarpeta+"-"+getUserCarpeta());
+
+			fout = new FileOutputStream("src/com/proyecto/usuariosCarpetas/" + nomUserFinal + "/director.llista", false);
+			oos = new ObjectOutputStream(fout);
+			// escrivim ArrayList sencer en el fitxer (1 sol objecte)
+			oos.writeObject(DirectorPersonal);
+			oos.flush();
+			oos.close();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (oos != null) {
+				try {
+					oos.close();
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
+			}
+		}
 	}
 
 	// MOSTRAR LISTAS PERSONALES
@@ -762,7 +859,7 @@ public class Funciones {
 		try {
 			// obrim fitxer per a lectura
 			FileInputStream file = new FileInputStream(
-					"src/com/proyecto/usuariosCarpetas/" + nomUser + "/director.llista");
+					"src/com/proyecto/usuariosCarpetas/" + nomUserFinal + "/director.llista");
 			ObjectInputStream reader = new ObjectInputStream(file);
 			try {
 
@@ -780,7 +877,7 @@ public class Funciones {
 		try {
 			// obrim fitxer per a lectura
 			FileInputStream file = new FileInputStream(
-					"src/com/proyecto/usuariosCarpetas/" + nomUser + "/pelicula.llista");
+					"src/com/proyecto/usuariosCarpetas/" + nomUserFinal + "/pelicula.llista");
 			ObjectInputStream reader = new ObjectInputStream(file);
 			try {
 
@@ -798,7 +895,7 @@ public class Funciones {
 		try {
 			// obrim fitxer per a lectura
 			FileInputStream file = new FileInputStream(
-					"src/com/proyecto/usuariosCarpetas/" + nomUser + "/actor.llista");
+					"src/com/proyecto/usuariosCarpetas/" + nomUserFinal + "/actor.llista");
 			ObjectInputStream reader = new ObjectInputStream(file);
 			try {
 
