@@ -11,3 +11,5 @@ admin            |000|admin             |                  |admin@admin.com     
 8inma            |008|inma              |guillembas        |inma@gmail.com                |12345             |Ontinyent    |USUARIO     |17/08/2000    
 9pepe            |009|pepe              |pepepepepe        |pepe@gmail.com                |12345             |Agullent     |USUARIO     |12/12/1999    
 10clara          |010|Clara             |revertmico        |clara@gmail.com               |12345             |onti         |USUARIO     |12/12/2000    
+1joseluis        |001|joseluis          |juan              |joseluis@gmail.com            |canals            |canals       |USUARIO     |30/04/2002    
+

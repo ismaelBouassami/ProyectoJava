@@ -2,7 +2,7 @@ package com.proyecto.clases;
 
 import java.io.Serializable;
 
-public class Director implements Serializable{
+public class Director implements Serializable {
 
 	/// ATRIBUTOS DIRECTOR ///
 	private static int countIdDirector = 0;
@@ -32,18 +32,8 @@ public class Director implements Serializable{
 //		this.idDirector = idDirector;
 //	}
 
-	
-	
 	public String getNombreDirector() {
 		return nombreDirector;
-	}
-
-	public static int getCountIdDirector() {
-		return countIdDirector;
-	}
-
-	public static void setCountIdDirector(int countIdDirector) {
-		Director.countIdDirector = countIdDirector;
 	}
 
 	public void setNombreDirector(String nombreDirector) {
@@ -76,7 +66,8 @@ public class Director implements Serializable{
 
 	@Override
 	public String toString() {
-		return   idDirector + ".- " + nombreDirector ;
+		return "Id Director: " + idDirector + "\nNombre: " + nombreDirector + "\nApellido: " + apellidoDirector
+				+ "\nEdad: " + edadDirector + "\nGoyas: " + goyas;
 	}
 
 }

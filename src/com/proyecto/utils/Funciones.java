@@ -23,6 +23,7 @@ import com.proyecto.users.User.Rol;
 
 public class Funciones {
 	static Scanner leer = new Scanner(System.in);
+	SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
 
 	// Fuera del metodo para no reinicializar
 	public static int conId = 1;
@@ -287,7 +288,7 @@ public class Funciones {
 
 	// GUARDAR DATOS PELICULA GENERAL
 	public static void registrarListaGeneralPelicula(String pelicula, int duracio, String fechaEmisio, String genero) {
-		Pelicula.setCountIdPelicula(PelisGeneral.size());
+//		Pelicula.setCountIdPelicula(PelisGeneral.size());
 		Pelicula peliculasCreadas = new Pelicula(pelicula, duracio, fechaEmisio, genero);
 		System.out.println(PelisGeneral.size());
 		PelisGeneral.add(peliculasCreadas);
@@ -301,7 +302,7 @@ public class Funciones {
 
 			// Guardar antes de crear el usuario la longitud del arrayList
 //			Pelicula.setCountIdPelicula(PelisGeneral.size
-			System.out.println("Va a guardar con variable: " + PelisGeneral.size());
+//			System.out.println("Va a guardar con variable: " + PelisGeneral.size());
 
 			fout = new FileOutputStream("src/com/proyecto/listasPeliculas/peliculas.llista", false);
 			oos = new ObjectOutputStream(fout);
@@ -357,7 +358,7 @@ public class Funciones {
 			// només tindrem un ArrayList d'objectes
 
 			// Guardar antes de crear el usuario la longitud del arrayList
-			Pelicula.setCountIdPelicula(PelisGeneral.size());
+//			Pelicula.setCountIdPelicula(PelisGeneral.size());
 
 			fout = new FileOutputStream("src/com/proyecto/listasPeliculas/actores.llista", false);
 			oos = new ObjectOutputStream(fout);
@@ -393,8 +394,13 @@ public class Funciones {
 		String goyas = ControlErrores.validarString();
 
 		registrarListaGeneralDirector(nom, edad, apellidos, goyas);
+
 		System.out.println("Se ha guardado correctamente " + "\u2714");
 	}
+
+		System.out.println("Se ha guardado correctamente");
+	} 
+
 
 	// GUARDAR DATOS LISTA DIRECTOR GENERAL
 	public static void registrarListaGeneralDirector(String pelicula, int duracio, String fechaEmisio, String genero) {
@@ -410,7 +416,7 @@ public class Funciones {
 			// només tindrem un ArrayList d'objectes
 
 			// Guardar antes de crear el usuario la longitud del arrayList
-			Pelicula.setCountIdPelicula(PelisGeneral.size());
+//			Pelicula.setCountIdPelicula(PelisGeneral.size());
 
 			fout = new FileOutputStream("src/com/proyecto/listasPeliculas/directores.llista", false);
 			oos = new ObjectOutputStream(fout);
@@ -563,7 +569,7 @@ public class Funciones {
 			// només tindrem un ArrayList d'objectes
 
 			// Guardar antes de crear el usuario la longitud del arrayList
-			Pelicula.setCountIdPelicula(PelisPersonal.size());
+//			Pelicula.setCountIdPelicula(PelisPersonal.size());
 //			System.out.println("-"+getNomUser()+"-"+nomUser+"-"+userCarpeta+"-"+getUserCarpeta());
 
 			fout = new FileOutputStream("src/com/proyecto/usuariosCarpetas/" + nomUserFinal + "/pelicula.llista",
@@ -622,7 +628,7 @@ public class Funciones {
 			// només tindrem un ArrayList d'objectes
 
 			// Guardar antes de crear el usuario la longitud del arrayList
-			Actor.setCountIdActor(ActorPersonal.size());
+//			Actor.setCountIdActor(ActorPersonal.size());
 //					System.out.println("-"+getNomUser()+"-"+nomUser+"-"+userCarpeta+"-"+getUserCarpeta());
 
 			fout = new FileOutputStream("src/com/proyecto/usuariosCarpetas/" + nomUserFinal + "/actor.llista", false);
@@ -678,7 +684,7 @@ public class Funciones {
 			// només tindrem un ArrayList d'objectes
 
 			// Guardar antes de crear el usuario la longitud del arrayList
-			Director.setCountIdDirector(DirectorPersonal.size());
+//			Director.setCountIdDirector(DirectorPersonal.size());
 //			System.out.println("-"+getNomUser()+"-"+nomUser+"-"+userCarpeta+"-"+getUserCarpeta());
 
 			fout = new FileOutputStream("src/com/proyecto/usuariosCarpetas/" + nomUserFinal + "/director.llista",

@@ -14,7 +14,7 @@ public class Main {
 			System.out.println("Escoja una opcion: \n-> 1. Registrar Usuario \n-> 2. Login \n-> 3. Salir");
 			menuPrincipal = ControlErrores.validarMenuPrincipal();
 			switch (menuPrincipal) {
-			case 1: 
+			case 1:
 				///// AQUI IRA LA FUNCION DE registrarUser() ///////////
 				System.out.println("-----Registrar Usuario-----");
 				Funciones.registrarUsuario();
@@ -24,7 +24,6 @@ public class Main {
 				System.out.println("-----Iniciar Sesion-----");
 				if(Funciones.validaUsuario()) {
 					do {
-						Funciones.cargarArrayslist();
 						System.out.println(
 								"\n-> 1. Ver lista general \n-> 2. Ver lista personal \n-> 3. Añadir nuevo elemento a lista general \n-> 4. Añadir nuevo elemento a lista personal \n-> 5. Salir");
 						menuSecundario = ControlErrores.validarSecundario();
@@ -50,7 +49,6 @@ public class Main {
 									System.out.println("-----Ver Directores (Lista GENERAL)-----");
 									Funciones.mostrarListaGeneralDirector();
 									break;
-									
 								default:
 									System.out.println("Salir");
 								}

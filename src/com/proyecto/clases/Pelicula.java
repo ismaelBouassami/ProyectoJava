@@ -6,7 +6,7 @@ public class Pelicula implements Serializable {
 
 	/// ATRIBUTOS PELICULAS ///
 	private static int countIdPelicula = 0;
-	private   int idPelicula;
+	private int idPelicula;
 	private String nombrePelicula;
 	private int duracion;
 	private String anioEmision;
@@ -24,28 +24,20 @@ public class Pelicula implements Serializable {
 	}
 
 	/// GETTERS Y SETTERS ///
-	public  int getIdPelicula() {
+	public int getIdPelicula() {
 		return idPelicula;
 	}
 
-//	public static void setIdPelicula(int idPelicula) {
-//		 Pelicula.idPelicula = idPelicula;
+//	public void setIdPelicula(int idPelicula) {
+//		this.idPelicula = idPelicula;
 //	}
-
-	public void setNombrePelicula(String nombrePelicula) {
-		this.nombrePelicula = nombrePelicula;
-	}
 
 	public String getNombrePelicula() {
 		return nombrePelicula;
 	}
 
-	public static int getCountIdPelicula() {
-		return countIdPelicula;
-	}
-
-	public static void setCountIdPelicula(int countIdPelicula) {
-		Pelicula.countIdPelicula = countIdPelicula;
+	public void setNombrePelicula(String nombrePelicula) {
+		this.nombrePelicula = nombrePelicula;
 	}
 
 	public int getDuracion() {
@@ -74,7 +66,8 @@ public class Pelicula implements Serializable {
 
 	@Override
 	public String toString() {
-		return idPelicula + ".- " + nombrePelicula;
+		return "Id Pelicula: " + idPelicula + "\nNombre: " + nombrePelicula + "\nDuracion: " + duracion + "\nAño: "
+				+ anioEmision + "\nGenero: " + genero;
 	}
 
 }
