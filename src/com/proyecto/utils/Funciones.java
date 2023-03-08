@@ -283,7 +283,7 @@ public class Funciones {
 
 	// GUARDAR DATOS PELICULA GENERAL
 	public static void registrarListaGeneralPelicula(String pelicula, int duracio, String fechaEmisio, String genero) {
-		Pelicula.setCountIdPelicula(PelisGeneral.size());
+//		Pelicula.setCountIdPelicula(PelisGeneral.size());
 		Pelicula peliculasCreadas = new Pelicula(pelicula, duracio, fechaEmisio, genero);
 		System.out.println(PelisGeneral.size());
 		PelisGeneral.add(peliculasCreadas);
@@ -297,7 +297,7 @@ public class Funciones {
 
 			// Guardar antes de crear el usuario la longitud del arrayList
 //			Pelicula.setCountIdPelicula(PelisGeneral.size
-			System.out.println("Va a guardar con variable: " + PelisGeneral.size());
+//			System.out.println("Va a guardar con variable: " + PelisGeneral.size());
 
 			fout = new FileOutputStream("src/com/proyecto/listasPeliculas/peliculas.llista", false);
 			oos = new ObjectOutputStream(fout);
@@ -353,7 +353,7 @@ public class Funciones {
 			// només tindrem un ArrayList d'objectes
 
 			// Guardar antes de crear el usuario la longitud del arrayList
-			Pelicula.setCountIdPelicula(PelisGeneral.size());
+//			Pelicula.setCountIdPelicula(PelisGeneral.size());
 
 			fout = new FileOutputStream("src/com/proyecto/listasPeliculas/actores.llista", false);
 			oos = new ObjectOutputStream(fout);
@@ -406,7 +406,7 @@ public class Funciones {
 			// només tindrem un ArrayList d'objectes
 
 			// Guardar antes de crear el usuario la longitud del arrayList
-			Pelicula.setCountIdPelicula(PelisGeneral.size());
+//			Pelicula.setCountIdPelicula(PelisGeneral.size());
 
 			fout = new FileOutputStream("src/com/proyecto/listasPeliculas/directores.llista", false);
 			oos = new ObjectOutputStream(fout);
@@ -559,7 +559,7 @@ public class Funciones {
 			// només tindrem un ArrayList d'objectes
 
 			// Guardar antes de crear el usuario la longitud del arrayList
-			Pelicula.setCountIdPelicula(PelisPersonal.size());
+//			Pelicula.setCountIdPelicula(PelisPersonal.size());
 //			System.out.println("-"+getNomUser()+"-"+nomUser+"-"+userCarpeta+"-"+getUserCarpeta());
 
 			fout = new FileOutputStream("src/com/proyecto/usuariosCarpetas/" + nomUserFinal + "/pelicula.llista",
@@ -618,7 +618,7 @@ public class Funciones {
 			// només tindrem un ArrayList d'objectes
 
 			// Guardar antes de crear el usuario la longitud del arrayList
-			Actor.setCountIdActor(ActorPersonal.size());
+//			Actor.setCountIdActor(ActorPersonal.size());
 //					System.out.println("-"+getNomUser()+"-"+nomUser+"-"+userCarpeta+"-"+getUserCarpeta());
 
 			fout = new FileOutputStream("src/com/proyecto/usuariosCarpetas/" + nomUserFinal + "/actor.llista", false);
@@ -674,7 +674,7 @@ public class Funciones {
 			// només tindrem un ArrayList d'objectes
 
 			// Guardar antes de crear el usuario la longitud del arrayList
-			Director.setCountIdDirector(DirectorPersonal.size());
+//			Director.setCountIdDirector(DirectorPersonal.size());
 //			System.out.println("-"+getNomUser()+"-"+nomUser+"-"+userCarpeta+"-"+getUserCarpeta());
 
 			fout = new FileOutputStream("src/com/proyecto/usuariosCarpetas/" + nomUserFinal + "/director.llista",

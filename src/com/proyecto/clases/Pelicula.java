@@ -1,6 +1,8 @@
 package com.proyecto.clases;
 
-public class Pelicula {
+import java.io.Serializable;
+
+public class Pelicula implements Serializable {
 
 	/// ATRIBUTOS PELICULAS ///
 	private static int countIdPelicula = 0;

@@ -1,6 +1,8 @@
 package com.proyecto.clases;
 
-public class Director {
+import java.io.Serializable;
+
+public class Director implements Serializable {
 
 	/// ATRIBUTOS DIRECTOR ///
 	private static int countIdDirector = 0;
