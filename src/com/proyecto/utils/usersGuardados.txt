@@ -1,4 +1,15 @@
 USUARIO          |ID | Nombre           | Apellidos        | Email                        | Contraseña       | Población   | Rol        | Fecha        
 -----------------+---+------------------+------------------+------------------------------+------------------+-------------+------------+--------------
 admin            |000|admin             |                  |admin@admin.com               |admin           	 |inexistente  |admin       |   
+1juanestevej     |001|joseluis          |juan              |juanestevej@gmail.com         |canals            |canals       |USUARIO     |30/04/2002    
+2edu             |002|edu               |valls             |edu@gmail.com                 |12345             |Agullent     |USUARIO     |08/10/1999    
+3crisi           |003|crisi             |crisicrisi        |crisi@gmail.com               |12345             |Rumania      |USUARIO     |10/10/2000    
+4juanma          |004|Juanma            |ReigBarbera       |juanma@gmail.com              |12345             |Ontinyent    |USUARIO     |31/12/1999    
+5david           |005|David             |MompoHermoso      |david@gmail.com               |12345             |Agullent     |USUARIO     |12/12/1999    
+6rameti          |006|rameti            |ramosureña        |rameti@gmail.com              |12345             |Agullent     |USUARIO     |31/12/1999    
+7sergi           |007|sergi             |riberalutier      |sergi@gmail.com               |12345             |Albaida      |USUARIO     |12/08/1999    
+8inma            |008|inma              |guillembas        |inma@gmail.com                |12345             |Ontinyent    |USUARIO     |17/08/2000    
+9pepe            |009|pepe              |pepepepepe        |pepe@gmail.com                |12345             |Agullent     |USUARIO     |12/12/1999    
+10clara          |010|Clara             |revertmico        |clara@gmail.com               |12345             |onti         |USUARIO     |12/12/2000    
 1joseluis        |001|joseluis          |juan              |joseluis@gmail.com            |canals            |canals       |USUARIO     |30/04/2002    
+
