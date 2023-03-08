@@ -59,8 +59,8 @@ public class Funciones {
 		System.out.println("Introduce tu poblacion:");
 		String poblacion = ControlErrores.validarString();
 
-		System.out.println("Introduce tu fecha de nacimiento:");
-		String fecha = ControlErrores.validarString();
+		System.out.println("Introduce tu fecha de nacimiento (dd/mm/aaaa):");
+		String fecha = ControlErrores.validarFecha();
 
 		// pedir contraseña
 		String contraseña = ControlErrores.pedirContraseña();
@@ -122,7 +122,7 @@ public class Funciones {
 				listDirector.createNewFile();
 				listPelicula.createNewFile();
 
-				System.out.println("El usuario se ha creado correctamente");
+				//System.out.println("El usuario se ha creado correctamente");
 			} else {
 				System.out.println("No se ha podido crear el usuario (quizas el usuario ya existe)");
 				System.out.println("Vuelve a registrar tu usuario: ");
@@ -165,18 +165,23 @@ public class Funciones {
 	}
 
 	// OBTENER NUMERO ID //
-	public static int ultimoNumero(String rutaArchivo) throws IOException {
+	public static int ultimoNumero(String rutaArchivo) {
 		// Crear un objeto File para el archivo en la ruta especificada
-		File archivo = new File(rutaArchivo);
-		Scanner scanner = new Scanner(archivo);
-
 		int ultimo = 0;
-		while (scanner.hasNextInt()) {
-			ultimo = scanner.nextInt();
-		}
+		try {
+			File archivo = new File(rutaArchivo);
+			Scanner scanner = new Scanner(archivo);
 
-		scanner.close();
+			while (scanner.hasNextInt()) {
+				ultimo = scanner.nextInt();
+			}
+			scanner.close();
+
+		} catch (Exception e) {
+			System.out.println("Error: " + e);
+		}
 		return ultimo;
+
 	}// ---------------------------------------------------------------------------------------------------------------
 
 	// GUARDAR USUARIOS EN FICHERO TXT
@@ -202,7 +207,7 @@ public class Funciones {
 			escriureUser.println(datos);
 			escriureUser.close();
 
-			System.out.println("\nUsuario guardado correctamente.");
+			System.out.println("\nUsuario guardado correctamente" + " \u2714" + "\n");
 		} catch (Exception e) {
 			System.out.println("Error: " + e);
 		}
@@ -233,7 +238,7 @@ public class Funciones {
 				if (dades[0].equals(usr)) {
 					trobat = true;
 					if (dades[5].equals(pwd)) {
-						System.out.println("Login satisfactorio para el usuario " + usr);
+						System.out.println("\nHola " + usr + ", has iniciado sesion " + "\u2714");
 						// missatge benvinguda, nom apellido
 						System.out.println(nomUser);
 						login = true;
@@ -277,7 +282,7 @@ public class Funciones {
 		String genero = ControlErrores.validarString();
 
 		registrarListaGeneralPelicula(pelicula, duracio, fechaEmisio, genero);
-		System.out.println("Se ha guardado correctamente");
+		System.out.println("Se ha guardado correctamente " + "\u2714");
 	}
 
 	// GUARDAR DATOS PELICULA GENERAL
@@ -335,7 +340,7 @@ public class Funciones {
 		String nacionalidad = ControlErrores.validarString();
 
 		registrarListaGeneralActor(nom, edad, apellidos, nacionalidad);
-		System.out.println("Se ha guardado correctamente");
+		System.out.println("Se ha guardado correctamente " + "\u2714");
 	}
 
 	// GUARDAR DATOS LISTA ACTOR GENERAL
@@ -388,7 +393,7 @@ public class Funciones {
 		String goyas = ControlErrores.validarString();
 
 		registrarListaGeneralDirector(nom, edad, apellidos, goyas);
-		System.out.println("Se ha guardado correctamente");
+		System.out.println("Se ha guardado correctamente " + "\u2714");
 	}
 
 	// GUARDAR DATOS LISTA DIRECTOR GENERAL
@@ -770,7 +775,7 @@ public class Funciones {
 	// MOSTRAR LISTA PERSONAL DIRECTOR
 	public static void mostrarListaDirectorPersonal() {
 		File vacio = new File("src/com/proyecto/usuariosCarpetas/" + nomUserFinal + "/director.llista");
-		
+
 		if (vacio.length() < 0 || vacio.length() == 0) {
 			System.out.println("No hay nada que mostrar");
 		} else {

@@ -1,12 +1,15 @@
 package com.proyecto.utils;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ControlErrores {
 
-	///  VALIDAR MENU PRINCIPAL ///
+	/// VALIDAR MENU PRINCIPAL ///
 	public static int validarMenuPrincipal() {
 		int n = 0;
 		boolean correcto = false;
@@ -29,6 +32,7 @@ public class ControlErrores {
 
 		return n;
 	}
+
 	/// VALIDAR MENU SECUNDARIO ///
 	public static int validarSecundario() {
 		int n = 0;
@@ -52,7 +56,7 @@ public class ControlErrores {
 
 		return n;
 	}
-	
+
 	/// VALIDAR MENU TERCIARIO ///
 	public static int validarTerciario() {
 		int n = 0;
@@ -76,7 +80,7 @@ public class ControlErrores {
 
 		return n;
 	}
-	
+
 	// VALIDAR UN INTEGER //
 	public static int validarInt() {
 		int n = 0;
@@ -128,10 +132,10 @@ public class ControlErrores {
 			password = entrada.nextLine().trim().replace("\t", " ").replace(" ", "");
 
 			if (password.equals("")) {
-				System.out.println("La contraseña no puede estar vacia.");
+				System.out.println("Error: La contraseña no puede estar vacia.");
 
 			} else if (password.length() < 5 || password.length() > 8) {
-				System.out.println("La contraseña debe ser minimo de 5 caracteres y maximo de 8.");
+				System.out.println("Error: La contraseña debe ser minimo de 5 caracteres y maximo de 8.");
 			} else {
 				System.out.println("Repite la contraseña: ");
 				passwordRep = entrada.nextLine().trim().replace("\t", " ").replace(" ", "");
@@ -155,7 +159,7 @@ public class ControlErrores {
 
 			email = entrada.nextLine();
 			if (!Pattern.compile("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$").matcher(email).find()) {
-				System.out.println("Email no valido vuelve a introducirlo");
+				System.out.println("Error: Email no valido vuelve a introducirlo.");
 			} else {
 				correcto = true;
 			}
@@ -164,9 +168,39 @@ public class ControlErrores {
 		return email;
 	}
 
-	
+	// VALIDAR FECHA //
+	public static String validarFecha() {
+		Scanner entrada = new Scanner(System.in);
+		String fecha = "";
+		boolean correcto = false;
+
+		do {
+			fecha = entrada.nextLine();
+			if (!Pattern.compile("^(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/((19|20)\\d\\d)$").matcher(fecha)
+					.find()) {
+				System.out.println("Error: Fecha no valida.");
+			} else {
+				// ESTO ES PARA COMPROBAR QUE CUANDO INTRODUCIMOS LA FECHA, EL AÑO INTRODUCIDO
+				// NO SEA MAYOR QUE EL ACTUAL
+				try {
+					LocalDate date = LocalDate.parse(fecha, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+					if (date.getYear() > LocalDate.now().getYear()) {
+						System.out.println("Error: El año no puede ser mayor que el actual.");
+					} else {
+						correcto = true;
+					}
+				} catch (DateTimeParseException e) {
+					System.out.println("Error: Fecha no valida.");
+				}
+			}
+		} while (!correcto);
+
+		return fecha;
+
+	}
+
 	// VALIDAR UN FILE //
 
 	// VALIDAR UN USUARI //
-	
+
 }
