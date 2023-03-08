@@ -528,7 +528,7 @@ public class Funciones {
 		} else {
 
 			Pelicula personal = PelisGeneral.get(numPeliACopiar - 1);
-
+			personal.setCountIdPelicula(PelisPersonal.size());
 			PelisPersonal.add(personal);
 			registrarListaPersonalPelicula();
 
