@@ -33,22 +33,6 @@ public class Funciones {
 
 	//Variable para crear listas personales
 	public static String nomUserFinal;
-	
-//	public static String getNomUser() {
-//		return nomUser;
-//	}
-//
-//	public static String setNomUser(String nomUser) {
-//		return Funciones.nomUser = nomUser;
-//	}
-//
-//	public static String getUserCarpeta() {
-//		return userCarpeta;
-//	}
-//
-//	public static void setUserCarpeta(String userCarpeta) {
-//		Funciones.userCarpeta = userCarpeta;
-//	}
 
 	// Listas generales
 	public static ArrayList<Pelicula> PelisGeneral = new ArrayList<Pelicula>();
@@ -113,21 +97,14 @@ public class Funciones {
 		// Pasamos el parametro usuario para crear carpeta
 		crearCarpeta(nomUser);
 
-//		setUserCarpeta(nomUser);
 	}
 
 	// OBTENER NOMBRE USUARIO //
 	public static String obtenerNomUser(int id, String email) {
 		int posFinal = email.lastIndexOf("@");
 		email = email.substring(0, posFinal);
-//		return setNomUser(nomUser = "" + id + email);
 		return nomUser = "" + id + email;
-
 	}
-
-	
-	
-	
 
 	// CREAR CARPETA USUARIO Y LISTAS //
 	public static String crearCarpeta(String nomUser) {
@@ -560,17 +537,17 @@ public class Funciones {
 			System.out.println("El numero que has puesto no esta en la lista");
 		} else {
 			Pelicula personal = PelisGeneral.get(numPeliACopiar - 1);
-			Pelicula.setCountIdPelicula(PelisPersonal.size() + 1);
-			System.out.println("pelispersonal id =" + PelisPersonal.size());
+//			Pelicula.setCountIdPelicula(PelisPersonal.size() + 1);
+//			System.out.println("pelispersonal id =" + PelisPersonal.size());
 			PelisPersonal.add(personal);
-			registrarListaPersonalPelicula(nomUser);
+			registrarListaPersonalPelicula();
 
 		}
 
 	}
 
 	// GUARDAR DATOS PELICULA LISTA PERSONAL
-	public static void registrarListaPersonalPelicula(String nomUser) {
+	public static void registrarListaPersonalPelicula() {
 		// serialització
 		ObjectOutputStream oos = null;
 		FileOutputStream fout = null;
@@ -641,7 +618,7 @@ public class Funciones {
 				try {
 					// llegim l'objecte que hi ha al fitxer (1 sol array List)
 					PelisPersonal = (ArrayList<Pelicula>) reader.readObject();
-					System.out.println("La lista general de pelicules es");
+					System.out.println("La lista general de peliculas es:");
 					for (Pelicula direc : PelisPersonal) {
 						System.out.println(direc.toString());
 						System.out.println();
