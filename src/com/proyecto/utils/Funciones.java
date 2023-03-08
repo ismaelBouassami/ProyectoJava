@@ -627,7 +627,7 @@ public class Funciones {
 
 	// MOSTRAR LISTA PERSONAL ACTOR
 	public static void mostrarListaActorPersonal() {
-		File vacio = new File("src/com/proyecto/usuariosCarpetas/" + nomUser + "actor.llista");
+		File vacio = new File("src/com/proyecto/usuariosCarpetas/" + nomUser + "/actor.llista");
 //		System.out.println(vacio.length());
 		if (vacio.length() < 0 || vacio.length() == 0) {
 			System.out.println("No hay nada que mostrar");
@@ -636,7 +636,7 @@ public class Funciones {
 			try {
 				// obrim fitxer per a lectura
 				FileInputStream file = new FileInputStream(
-						"src/com/proyecto/usuariosCarpetas/" + nomUser + "actor.llista");
+						"src/com/proyecto/usuariosCarpetas/" + nomUser + "/actor.llista");
 				ObjectInputStream reader = new ObjectInputStream(file);
 				try {
 					// llegim l'objecte que hi ha al fitxer (1 sol array List)
