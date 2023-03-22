@@ -398,9 +398,6 @@ public class Funciones {
 		System.out.println("Se ha guardado correctamente " + "\u2714");
 	}
 
-		System.out.println("Se ha guardado correctamente");
-	} 
-
 
 	// GUARDAR DATOS LISTA DIRECTOR GENERAL
 	public static void registrarListaGeneralDirector(String pelicula, int duracio, String fechaEmisio, String genero) {

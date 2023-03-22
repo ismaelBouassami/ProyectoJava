@@ -47,6 +47,10 @@ public class Actor implements Serializable {
 	public void setApellidoActor(String apellidoActor) {
 		this.apellidoActor = apellidoActor;
 	}
+	
+	public String getNombYApellActor() {
+		return nombreActor+" "+apellidoActor;
+	}
 
 	public int getEdadActor() {
 		return edadActor;

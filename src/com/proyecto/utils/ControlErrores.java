@@ -3,9 +3,13 @@ package com.proyecto.utils;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import com.proyecto.clases.Actor;
+import com.proyecto.clases.Director;
+import com.proyecto.clases.Pelicula;
 
 public class ControlErrores {
 
@@ -202,5 +206,56 @@ public class ControlErrores {
 	// VALIDAR UN FILE //
 
 	// VALIDAR UN USUARI //
+	
+	// VALIDAR LLISTES GENERALS //
+	// VALIDAR PELICULA //
+	public boolean validaPeliGeneral(String nom, ArrayList<Pelicula> pelis) {
+		boolean trobat=false;
+		int i=0;
+		while(i<pelis.size() && !trobat) {
+			Pelicula peli = pelis.get(i);
+			if(peli.getNombrePelicula().toLowerCase().equals(nom.toLowerCase())) {
+				System.out.println("ERROR: Esta película ya esta en la lista general.");
+				System.out.println("Película: "+peli.toString());
+				trobat=true;
+			}
+			i++;
+		}
+		return trobat;
+	}
+	
+	// VALIDAR ACTOR //
+		public boolean validaActorGeneral(String nomicognoms, ArrayList<Actor> actors) {
+			boolean trobat=false;
+			int i=0;
+			while(i<actors.size() && !trobat) {
+				Actor actor = actors.get(i);
+				if(actor.getNombYApellActor().toLowerCase().equals(nomicognoms.toLowerCase())) {
+					System.out.println("ERROR: Este actor ya esta en la lista general.");
+					System.out.println("Actor: "+actor.toString());
+					trobat=true;
+				}
+				i++;
+			}
+			return trobat;
+		}
+		
+	// VALIDAR DIRECTOR //
+		public boolean validaDirectorGeneral(String nomicognoms, ArrayList<Director> directors) {
+			boolean trobat=false;
+			int i=0;
+			while(i<directors.size() && !trobat) {
+				Director director = directors.get(i);
+				if(director.getNombYApellDirector().toLowerCase().equals(nomicognoms.toLowerCase())) {
+					System.out.println("ERROR: Este director ya esta en la lista general.");
+					System.out.println("Director: "+director.toString());
+					trobat=true;
+				}
+				i++;
+			}
+			return trobat;
+		}
+	
+	
 
 }
